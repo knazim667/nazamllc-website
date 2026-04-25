@@ -68,7 +68,8 @@ const inputClass = `
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' });
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error | pending_activation
+
 
   const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -91,6 +92,8 @@ export default function Contact() {
       if (data.success === 'true' || data.success === true) {
         setStatus('success');
         setForm({ name: '', email: '', company: '', service: '', message: '' });
+      } else if (data.message?.toLowerCase().includes('activation') || data.message?.toLowerCase().includes('confirm')) {
+        setStatus('pending_activation');
       } else {
         setStatus('error');
       }
@@ -278,6 +281,15 @@ export default function Contact() {
                           className={`${inputClass} resize-none`}
                         />
                       </div>
+
+                      {status === 'pending_activation' && (
+                        <div className="p-4 rounded-xl border border-amber-400/30 bg-amber-400/5">
+                          <p className="text-amber-400 text-sm font-semibold font-sans mb-1">One-time activation required</p>
+                          <p className="text-slate-400 text-xs font-sans leading-relaxed">
+                            Check <strong className="text-white">admin@nazamllc.com</strong> for an activation email from Formsubmit — click the link inside, then submit again.
+                          </p>
+                        </div>
+                      )}
 
                       {status === 'error' && (
                         <p className="text-red-400 text-sm font-sans">
