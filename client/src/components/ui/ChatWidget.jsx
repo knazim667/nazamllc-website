@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ZOOM_URL = 'https://scheduler.zoom.us/muhammad-nazam-1upfay/30-mins-with-muhammad';
 
+const SYSTEM_PROMPT = 'You are a friendly assistant for Nazam LLC. Help visitors learn about our services: AI automation and n8n workflows, Amazon and Walmart full account management including suspended account recovery and PPC, custom app and web development, and stock market financial education. If someone is interested or ready to talk, encourage them to book a meeting at https://scheduler.zoom.us/muhammad-nazam-1upfay/30-mins-with-muhammad or email admin@nazamllc.com. Keep answers short, helpful, and professional.';
+
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1 px-4 py-3">
@@ -63,16 +65,23 @@ export default function ChatWidget() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: next }),
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://nazamllc.com',
+          'X-Title': 'Nazam LLC',
+        },
+        body: JSON.stringify({
+          model: 'minimax/minimax-m2.5:free',
+          messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...next],
+          max_tokens: 512,
+        }),
       });
       const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: 'assistant', content: data.reply || 'Sorry, something went wrong. Please email admin@nazamllc.com.' },
-      ]);
+      const reply = data.choices?.[0]?.message?.content || 'Sorry, something went wrong. Please email admin@nazamllc.com.';
+      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
     } catch {
       setMessages((prev) => [
         ...prev,

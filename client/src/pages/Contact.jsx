@@ -76,13 +76,19 @@ export default function Contact() {
     e.preventDefault();
     setStatus('loading');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://formsubmit.co/ajax/admin@nazamllc.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          _replyto: form.email,
+          subject: `New Inquiry: ${form.service || 'General'} — ${form.name}`,
+          message: `Company: ${form.company || 'N/A'}\nService: ${form.service || 'Not specified'}\n\n${form.message}`,
+        }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success === 'true' || data.success === true) {
         setStatus('success');
         setForm({ name: '', email: '', company: '', service: '', message: '' });
       } else {
