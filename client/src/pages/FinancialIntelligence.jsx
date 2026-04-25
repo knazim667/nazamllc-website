@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FileText } from 'lucide-react';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import GlassCard from '../components/ui/GlassCard';
 import SectionLabel from '../components/ui/SectionLabel';
@@ -15,35 +16,15 @@ const PAGE_TRANSITION = {
 const resources = [
   {
     title: 'The Stock Market Timeline Guide',
-    subtitle: 'Free PDF Download',
-    color: 'emerald',
-    desc: 'A visual, chronological guide to how stock market cycles unfold — from early recovery through late-cycle contraction and bear market phases.',
-    topics: [
-      'The four phases of a market cycle with historical examples',
-      'How Federal Reserve policy shifts drive cycle transitions',
-      'Bull/bear market historical duration and depth data (1950–present)',
-      'Key economic indicators to watch at each phase',
-      'Common investor mistakes at each stage — and how to avoid them',
-      'How to identify early signs of cycle phase change',
-      'Suggested portfolio allocation posture at each stage',
-    ],
-    for: 'Investors who want a structured, historically-grounded framework instead of reacting to daily headlines.',
+    desc: 'A visual, chronological guide to how stock market cycles unfold — from early recovery through late-cycle contraction and bear market phases. Includes historical data from 1950 to present, Fed policy breakdown, and portfolio allocation frameworks.',
+    tags: ['6 Chapters', 'Historical Data 1950–Present', 'Portfolio Allocation Guide'],
+    link: '/downloads/stock-market-timeline-guide.html',
   },
   {
     title: 'The Sector Rotation Cheat Sheet',
-    subtitle: 'Free PDF Download',
-    color: 'emerald',
-    desc: 'A one-page visual guide explaining how institutional money moves between market sectors across the economic cycle, and how to anticipate those flows.',
-    topics: [
-      'The classic sector rotation model: which sectors outperform when',
-      'The 11 GICS sectors explained: what moves them, what kills them',
-      'How to use XLF/XLK/XLE/XLV/XLU relative strength to read flows',
-      'Leading vs. lagging sectors — why retail investors buy the wrong ones',
-      'How AI and ML are being used by quant funds for rotation patterns',
-      'DIY sector screening: free tools and workflows',
-      'Historical examples: 2000, 2008, 2020, and 2022 rate-hike cycle',
-    ],
-    for: 'Investors who want to understand the macro current that carries or drowns all stocks in a sector.',
+    desc: 'How institutional money moves between all 11 GICS sectors across the economic cycle. Includes ETF relative strength signals, AI/quant methods, free screening tools, and historical examples from 2000, 2008, 2020, and 2022.',
+    tags: ['All 11 GICS Sectors', 'Free Screening Tools', 'Historical Case Studies'],
+    link: '/downloads/sector-rotation-cheat-sheet.html',
   },
 ];
 
@@ -191,33 +172,48 @@ export default function FinancialIntelligence() {
           <div className="grid md:grid-cols-2 gap-6">
             {resources.map((r, i) => (
               <ScrollReveal key={r.title} delay={i * 0.1}>
-                <GlassCard glow="emerald" className="h-full">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <span className="text-xs font-sans text-slate-500 uppercase tracking-widest">{r.subtitle}</span>
-                    <span className="flex-shrink-0 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 text-xs font-semibold font-sans">
-                      FREE
-                    </span>
+                <motion.div
+                  className="relative glass rounded-2xl p-6 shadow-card transition-all duration-500 hover:border-emerald-400/25 hover:shadow-[0_0_40px_rgba(16,185,129,0.12),0_8px_32px_rgba(0,0,0,0.5)] h-full flex flex-col"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                >
+                  {/* FREE badge */}
+                  <span className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 text-xs font-bold font-sans tracking-wide">
+                    FREE
+                  </span>
+
+                  {/* Icon */}
+                  <div className="w-11 h-11 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-5">
+                    <FileText className="w-5 h-5 text-emerald-400" />
                   </div>
-                  <h3 className="font-display font-bold text-white text-xl mb-3">{r.title}</h3>
-                  <p className="text-slate-400 text-sm font-sans leading-relaxed mb-5">{r.desc}</p>
-                  <ul className="space-y-2 mb-5">
-                    {r.topics.map((t) => (
-                      <li key={t} className="flex items-start gap-2.5 text-sm font-sans text-slate-300">
-                        <span className="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-emerald-400/40 text-emerald-400 flex items-center justify-center text-xs">✓</span>
-                        {t}
-                      </li>
+
+                  <h3 className="font-display font-bold text-white text-xl mb-3 pr-16">{r.title}</h3>
+                  <p className="text-slate-400 text-sm font-sans leading-relaxed mb-5 flex-1">{r.desc}</p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {r.tags.map((tag) => (
+                      <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs font-sans">
+                        <span className="text-emerald-400 font-bold">✓</span>
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
-                  <p className="text-xs text-slate-500 font-sans italic mb-5">
-                    <span className="text-slate-400 font-medium not-italic">Who it's for: </span>{r.for}
-                  </p>
-                  <Button href="#" variant="outline" size="sm">
-                    Download Free PDF →
+                  </div>
+
+                  <Button href={r.link} variant="primary" size="sm">
+                    Download Free Guide →
                   </Button>
-                </GlassCard>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
+
+          {/* Disclaimer */}
+          <ScrollReveal delay={0.2}>
+            <p className="mt-8 text-xs text-slate-600 font-sans leading-relaxed text-center max-w-2xl mx-auto">
+              These resources are for educational purposes only and do not constitute financial advice. All investing involves risk. Past performance does not guarantee future results. Nazam LLC is not a registered financial advisor.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -321,8 +317,8 @@ export default function FinancialIntelligence() {
             </h2>
             <p className="text-slate-400 font-sans mb-10">No email required for the PDFs. No course pitch at the end. Just the content.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button href="#" variant="primary" size="lg">Download the Timeline Guide →</Button>
-              <Button href="#" variant="outline" size="lg">Download Sector Rotation Sheet</Button>
+              <Button href="/downloads/stock-market-timeline-guide.html" variant="primary" size="lg">Download the Timeline Guide →</Button>
+              <Button href="/downloads/sector-rotation-cheat-sheet.html" variant="outline" size="lg">Download Sector Rotation Sheet</Button>
             </div>
           </ScrollReveal>
         </div>
