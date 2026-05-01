@@ -63,6 +63,8 @@ export default function AppDevelopment() {
         title="App & Web Development"
         description="Mobile apps, web platforms, and AI-powered applications built by Nazam LLC — from concept to launch. Clean code, real UX, no hand-waving."
         path="/app-development"
+        serviceName="App & Web Development"
+        serviceDescription="Nazam LLC builds mobile apps, web platforms, AI-powered applications, APIs, dashboards, and product experiences from concept through launch."
       />
       {/* Hero */}
       <section className="relative pt-36 pb-24 overflow-hidden">

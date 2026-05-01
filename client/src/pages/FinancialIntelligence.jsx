@@ -89,6 +89,8 @@ export default function FinancialIntelligence() {
         title="Financial Intelligence & Stock Market Education"
         description="Free stock market education from Nazam LLC — technical analysis, sector rotation, and AI-driven trading tools explained clearly. No upsell, just signal."
         path="/financial-intelligence"
+        serviceName="Financial Intelligence & Stock Market Education"
+        serviceDescription="Nazam LLC publishes financial intelligence resources about technical analysis, sector rotation, market structure, and AI-driven trading tools."
       />
       {/* Hero */}
       <section className="relative pt-36 pb-24 overflow-hidden">

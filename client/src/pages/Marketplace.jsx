@@ -127,6 +127,8 @@ export default function Marketplace() {
         title="Amazon & Walmart Marketplace Management"
         description="Suspended accounts, dying PPC, buried listings — Nazam LLC fixes it all. Full Amazon and Walmart account management, suspended account recovery, and multi-channel launch strategy."
         path="/marketplace"
+        serviceName="Amazon & Walmart Marketplace Management"
+        serviceDescription="Nazam LLC helps Amazon and Walmart sellers with account management, suspended account recovery, listing optimization, PPC support, reporting dashboards, and multi-channel marketplace strategy."
       />
       {/* Hero */}
       <section className="relative pt-36 pb-24 overflow-hidden">

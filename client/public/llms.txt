@@ -1,0 +1,34 @@
+# Nazam LLC
+
+> Practical AI automation, marketplace management, custom app development, and financial intelligence.
+
+Nazam LLC helps businesses reduce manual work, improve marketplace operations, build useful software, and understand financial markets. The company serves small businesses, Amazon sellers, Walmart sellers, startups, entrepreneurs, and operators across the United States.
+
+Primary URL: https://nazamllc.com/
+Contact: admin@nazamllc.com
+Founder: Muhammad Nazam
+Founder profile: https://linkedin.com/in/muhammad-nazam
+Area served: United States
+
+## Core Pages
+
+- Home: https://nazamllc.com/
+- AI Automations & n8n Workflows: https://nazamllc.com/ai-automations
+- Amazon & Walmart Marketplace Management: https://nazamllc.com/marketplace
+- App & Web Development: https://nazamllc.com/app-development
+- Financial Intelligence: https://nazamllc.com/financial-intelligence
+- Contact: https://nazamllc.com/contact
+
+## Services
+
+- n8n workflow automation
+- Autonomous AI agents
+- Lead follow-up automation
+- AI customer support and reporting agents
+- Amazon and Walmart seller account support
+- Suspended account recovery support
+- Marketplace listing, PPC, and reporting strategy
+- Custom app and web development
+- AI-powered applications
+- Financial education and market intelligence resources
+

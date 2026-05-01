@@ -1,0 +1,26 @@
+Nazam LLC Hostinger Upload Instructions
+
+1. Log in to Hostinger hPanel.
+2. Open File Manager for nazamllc.com.
+3. Open the public_html folder.
+4. Upload the contents of this hostinger-site folder into public_html:
+   - index.html
+   - styles.css
+   - script.js
+   - robots.txt
+   - sitemap.xml
+   - llms.txt
+5. Make sure index.html is directly inside public_html, not nested inside another folder.
+6. Visit https://nazamllc.com/ after upload and test:
+   - Header navigation links
+   - Free audit buttons
+   - Contact form submission
+   - Contact form validation for empty fields, invalid email, invalid URL, and short messages
+   - LinkedIn link
+   - Mobile layout
+
+Notes:
+- This is a static website. It does not require Node, React, Vite, or a database.
+- The contact form uses FormSubmit AJAX to send messages to admin@nazamllc.com from a static Hostinger page.
+- Do not test FormSubmit by double-clicking index.html. It must run from https://nazamllc.com or from a local web server.
+- If you prefer Hostinger's native forms or another provider later, replace the form action URL in index.html.

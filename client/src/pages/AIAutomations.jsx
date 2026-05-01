@@ -121,6 +121,8 @@ export default function AIAutomations() {
         title="AI Automations & n8n Workflows"
         description="Stop doing manually what a machine can do better. Nazam LLC builds n8n workflows, autonomous AI agents, and custom automation systems that cut operational overhead by 40% or more."
         path="/ai-automations"
+        serviceName="AI Automations & n8n Workflows"
+        serviceDescription="Nazam LLC builds n8n workflows, autonomous AI agents, lead follow-up automations, reporting agents, and custom automation systems for small businesses and marketplace sellers."
       />
       {/* Hero */}
       <section className="relative pt-36 pb-24 overflow-hidden">
