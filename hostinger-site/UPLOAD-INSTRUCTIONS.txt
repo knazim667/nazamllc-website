@@ -13,6 +13,7 @@ Nazam LLC Hostinger Upload Instructions
 5. Make sure index.html is directly inside public_html, not nested inside another folder.
 6. Visit https://nazamllc.com/ after upload and test:
    - Header navigation links
+   - Build Stories section
    - Free audit buttons
    - Contact form submission
    - Contact form validation for empty fields, invalid email, invalid URL, and short messages
@@ -21,6 +22,8 @@ Nazam LLC Hostinger Upload Instructions
 
 Notes:
 - This is a static website. It does not require Node, React, Vite, or a database.
-- The contact form uses FormSubmit AJAX to send messages to admin@nazamllc.com from a static Hostinger page.
-- Do not test FormSubmit by double-clicking index.html. It must run from https://nazamllc.com or from a local web server.
-- If you prefer Hostinger's native forms or another provider later, replace the form action URL in index.html.
+- The contact form currently sends JSON to FormSubmit at the action URL in index.html.
+- Do not test the contact form by double-clicking index.html. It must run from a local web server or the live domain.
+- If you later switch to n8n, use a public HTTPS webhook URL for the live Hostinger site.
+- Important domain check: this upload is configured for https://nazamllc.com/ without a hyphen. As of May 2, 2026, https://nazam-llc.com/ with a hyphen does not resolve in DNS from our test environment. If you want to use the hyphenated domain, add/fix its DNS records in Hostinger and update the canonical URLs in index.html, robots.txt, sitemap.xml, and llms.txt.
+- If the design still looks broken after upload, clear the Hostinger/LiteSpeed cache and test in a private browser window. The HTML uses versioned CSS/JS URLs so fresh uploads are less likely to be hidden by browser cache.

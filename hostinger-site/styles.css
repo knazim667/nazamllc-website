@@ -293,6 +293,7 @@ p {
 .service-band,
 .systems-section,
 .process-section,
+.build-stories-section,
 .projects-section,
 .pricing-section,
 .about-section,
@@ -511,6 +512,201 @@ p {
 .process-list p {
   margin-top: 8px;
   color: var(--muted);
+}
+
+.build-stories-section {
+  background: #fbfcf7;
+}
+
+.build-stories-section .section-intro {
+  max-width: 900px;
+  margin-bottom: 48px;
+}
+
+.build-stories-section .section-intro p {
+  margin-top: 18px;
+}
+
+.story-board {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.build-story {
+  display: grid;
+  grid-template-columns: 0.36fr 1fr 0.52fr;
+  gap: clamp(24px, 4vw, 54px);
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 42px) 0;
+}
+
+.story-index {
+  align-self: start;
+}
+
+.story-index span,
+.story-steps span {
+  color: #0b8f6d;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story-index strong {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.1;
+}
+
+.story-body p {
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.story-checks,
+.story-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.story-checks span {
+  border: 1px solid rgba(11, 143, 109, 0.2);
+  border-radius: 999px;
+  padding: 8px 11px;
+  color: #135c4d;
+  background: rgba(217, 246, 235, 0.72);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.story-steps span {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.story-art {
+  position: relative;
+  display: grid;
+  min-height: 218px;
+  overflow: hidden;
+  border: 1px solid rgba(7, 17, 31, 0.12);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgba(7, 17, 31, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 17, 31, 0.05) 1px, transparent 1px),
+    #ffffff;
+  background-size: 28px 28px, 28px 28px, auto;
+  box-shadow: 0 18px 54px rgba(7, 17, 31, 0.08);
+}
+
+.story-art > span {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  color: #0b8f6d;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story-art-figma i,
+.story-art-code i {
+  display: block;
+  border-radius: var(--radius);
+  background: var(--ink);
+  box-shadow: 0 12px 28px rgba(7, 17, 31, 0.16);
+}
+
+.story-art-figma {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: end;
+  padding: 54px 16px 16px;
+}
+
+.story-art-figma i {
+  min-height: 116px;
+}
+
+.story-art-figma i:nth-of-type(2) {
+  min-height: 150px;
+  background: #123c35;
+}
+
+.story-art-figma i:nth-of-type(3) {
+  min-height: 92px;
+  background: #195b4d;
+}
+
+.story-art-code {
+  align-content: end;
+  gap: 12px;
+  padding: 58px 18px 18px;
+}
+
+.story-art-code i {
+  height: 14px;
+  background: #0b8f6d;
+}
+
+.story-art-code i:nth-of-type(1) {
+  width: 74%;
+}
+
+.story-art-code i:nth-of-type(2) {
+  width: 92%;
+  background: var(--ink);
+}
+
+.story-art-code i:nth-of-type(3) {
+  width: 58%;
+}
+
+.story-art-code i:nth-of-type(4) {
+  width: 82%;
+  background: #195b4d;
+}
+
+.story-art-feedback {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-content: end;
+  padding: 58px 16px 16px;
+  background:
+    linear-gradient(135deg, rgba(141, 232, 255, 0.2), transparent 48%),
+    linear-gradient(rgba(7, 17, 31, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 17, 31, 0.05) 1px, transparent 1px),
+    #ffffff;
+  background-size: auto, 28px 28px, 28px 28px, auto;
+}
+
+.story-art-feedback strong {
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  border: 1px solid rgba(7, 17, 31, 0.14);
+  border-radius: var(--radius);
+  color: var(--white);
+  background: var(--ink);
+  font-size: 0.82rem;
+}
+
+.story-art-feedback strong:nth-of-type(even) {
+  transform: translateY(-18px);
+  color: var(--ink);
+  background: var(--accent-2);
 }
 
 .projects-section .section-intro p {
@@ -853,6 +1049,7 @@ details p {
   .answer-section,
   .audit-list,
   .systems-section,
+  .build-story,
   .about-section,
   .contact-section {
     grid-template-columns: 1fr;
@@ -931,6 +1128,7 @@ details p {
   .service-band,
   .systems-section,
   .process-section,
+  .build-stories-section,
   .projects-section,
   .pricing-section,
   .about-section,

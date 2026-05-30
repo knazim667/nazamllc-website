@@ -1,8 +1,10 @@
 # Nazam LLC
 
-> Practical AI automation systems for small businesses, Amazon sellers, and Walmart sellers.
+> AI automation for small businesses, Amazon sellers, and Walmart sellers.
 
-Nazam LLC builds AI automation systems, reporting dashboards, workflow automations, and marketplace growth systems. The company helps small businesses respond faster to leads, reduce manual admin work, simplify booking and CRM workflows, and make operating data easier to see. It also helps Amazon and Walmart sellers review listings, improve reporting, monitor inventory and order issues, and prioritize marketplace growth actions.
+Nazam LLC builds AI chatbots, AI receptionists, seller dashboards, lead follow-up systems, and workflow automation for small businesses, Amazon sellers, and Walmart sellers. The page is optimized around buyer-intent services including AI automation for small business, Amazon seller automation service, AI chatbot for small business, Walmart seller automation, AI receptionist for small business, business workflow automation service, and Amazon reporting dashboard service.
+
+Nazam LLC also shares build stories from its own AI glow-up mobile application work. The website has a visible "Build Stories" hero button near the top of the home page, a "Build Stories" navigation link, a process-section link, and a footer link. All point to https://nazamllc.com/#stories. This section explains how the idea was shaped, how the design moved into Figma, how the screens were turned into code, how daily usage was tested, and how feedback changed the product before launch.
 
 Primary URL: https://nazamllc.com/
 Contact: admin@nazamllc.com
@@ -13,15 +15,41 @@ Area served: United States
 ## Services
 
 - AI automation for small businesses
-- AI chatbot and AI receptionist systems
+- AI chatbot for small business
+- AI receptionist for small business
 - Lead capture and follow-up automation
 - CRM, email, and appointment booking workflows
+- Business workflow automation service
 - Reporting dashboards and internal automations
+- Amazon seller automation service
+- Walmart seller automation
+- Amazon reporting dashboard service
 - Amazon and Walmart listing review workflows
-- Marketplace seller reporting dashboards
+- Marketplace seller dashboards and alerts
 - Inventory and order alert workflows
 - SEO and PageSpeed monitoring agents
 - Weekly performance reporting automations
+- AI mobile app concept, Figma, build, and testing stories
+
+## Current Page SEO
+
+Primary page title: AI Automation for Small Business & Amazon Sellers | Nazam LLC
+
+Primary meta description: Nazam LLC builds AI chatbots, seller dashboards, lead follow-up systems, and workflow automation for small businesses, Amazon sellers, and Walmart sellers.
+
+Primary H1: Nazam LLC builds AI automation for small businesses and Amazon sellers.
+
+The visible page copy now includes the priority service phrases in natural sections: AI automation for small business in the hero and answer section, Amazon seller automation service in the services/pricing/FAQ sections, AI chatbot for small business and AI receptionist for small business in the services/systems/FAQ sections, Walmart seller automation in the hero/answer/services/pricing/FAQ sections, business workflow automation service in schema and summary language, and Amazon reporting dashboard service in the hero/answer/services/pricing/FAQ sections.
+
+## AI Glow-Up App Build Stories
+
+The Build Stories section is available at https://nazamllc.com/#stories.
+
+Story 01, "Idea to Figma", explains that the app started from a daily user question: "What should I do today?" The concept became a daily glow-up assistant that understands the user's goal, turns it into a realistic routine, and makes progress visible without overwhelming the user. The design decisions include onboarding flow, goal intake, daily plan screen, and progress view.
+
+Story 02, "Design to code", explains how the Figma-style product flow became a testable daily-use loop. The daily path is: open the app, choose a goal, generate a plan, complete the routine, and review progress. This story shows how Nazam LLC thinks through code and product testing from the user's repeated daily behavior.
+
+Story 03, "Feedback changes", explains what changed after another reviewer joined the process. The visible changes were shorter onboarding, cleaner copy, less friction, better progress notes, and a clearer next step for the user.
 
 ## Best Starting Point
 
@@ -32,7 +60,7 @@ The free audit reviews one website, workflow, or marketplace store and identifie
 - Home and service overview: https://nazamllc.com/
 - Services: https://nazamllc.com/#services
 - Systems: https://nazamllc.com/#systems
+- Build stories / AI glow-up app story: https://nazamllc.com/#stories
 - Project examples: https://nazamllc.com/#projects
 - FAQ: https://nazamllc.com/#faq
 - Contact: https://nazamllc.com/#contact
-

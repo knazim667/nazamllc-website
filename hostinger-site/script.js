@@ -12,6 +12,19 @@
     header.classList.toggle("is-scrolled", window.scrollY > 10);
   }
 
+  function scrollHashIntoView() {
+    const hash = window.location.hash;
+    if (!hash || hash === "#top") return;
+
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!target) return;
+
+    window.setTimeout(function () {
+      target.scrollIntoView({ block: "start", behavior: "auto" });
+      updateHeader();
+    }, 80);
+  }
+
   function closeMenu() {
     if (!navToggle || !navMenu || !header) return;
     navToggle.setAttribute("aria-expanded", "false");
@@ -22,6 +35,8 @@
 
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("load", scrollHashIntoView);
+  window.addEventListener("hashchange", scrollHashIntoView);
 
   if ("IntersectionObserver" in window && revealItems.length) {
     const revealObserver = new IntersectionObserver(function (entries) {
@@ -123,6 +138,27 @@
     return !firstInvalid;
   }
 
+  function buildLeadPayload(form) {
+    const formData = new FormData(form);
+
+    return {
+      source: formData.get("source") || "Nazam LLC website contact form",
+      _subject: formData.get("_subject") || "New Nazam LLC website inquiry",
+      _template: formData.get("_template") || "table",
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      businessType: String(formData.get("businessType") || "").trim(),
+      interest: String(formData.get("interest") || "").trim(),
+      link: String(formData.get("link") || "").trim(),
+      contactMethod: String(formData.get("contactMethod") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+      pageUrl: window.location.href,
+      pageTitle: document.title,
+      submittedAt: new Date().toISOString(),
+      userAgent: navigator.userAgent
+    };
+  }
+
   if (contactForm) {
     contactForm.addEventListener("input", function (event) {
       if (!event.target.matches("input, textarea, select")) return;
@@ -146,8 +182,12 @@
 
       const submitButton = contactForm.querySelector("button[type='submit']");
       const formData = new FormData(contactForm);
-      formData.set("_replyto", formData.get("email") || "");
-      formData.set("subject", "New Nazam LLC website inquiry");
+      if (String(formData.get("_honey") || "").trim()) {
+        contactForm.reset();
+        setStatus("Message sent. Thank you. Nazam LLC will follow up soon.", "success");
+        return;
+      }
+      const payload = buildLeadPayload(contactForm);
 
       if (submitButton) {
         submitButton.disabled = true;
@@ -157,14 +197,14 @@
       try {
         const response = await fetch(contactForm.action, {
           method: "POST",
-          headers: { Accept: "application/json" },
-          body: formData
-        });
-        const data = await response.json().catch(function () {
-          return {};
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
         });
 
-        if (response.ok && (data.success === true || data.success === "true")) {
+        if (response.ok) {
           contactForm.reset();
           contactForm.querySelectorAll(".is-invalid").forEach(function (field) {
             field.classList.remove("is-invalid");
@@ -175,10 +215,10 @@
           });
           setStatus("Message sent. Thank you. Nazam LLC will follow up soon.", "success");
         } else {
-          setStatus(data.message || "Unable to send right now. Please email admin@nazamllc.com directly.", "error");
+          setStatus("Unable to send right now. Please email admin@nazamllc.com directly.", "error");
         }
       } catch (error) {
-        setStatus("Unable to send right now. Please make sure the page is running on a web server, then try again.", "error");
+        setStatus("Unable to send right now. Please email admin@nazamllc.com directly.", "error");
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
