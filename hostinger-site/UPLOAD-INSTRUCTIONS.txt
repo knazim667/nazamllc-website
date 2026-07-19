@@ -10,20 +10,28 @@ Nazam LLC Hostinger Upload Instructions
    - robots.txt
    - sitemap.xml
    - llms.txt
+   - images/ (entire folder)
 5. Make sure index.html is directly inside public_html, not nested inside another folder.
 6. Visit https://nazamllc.com/ after upload and test:
-   - Header navigation links
-   - Build Stories section
-   - Free audit buttons
-   - Contact form submission
-   - Contact form validation for empty fields, invalid email, invalid URL, and short messages
-   - LinkedIn link
+   - Header navigation links (Services, Work, Method, FAQ, About, Contact)
+   - Hero CTAs ("See What We Do", "Book a Free Strategy Call")
+   - Labs filter pills (Automation / Marketplace / App Dev)
+   - FAQ accordion open/close
+   - mailto: links (admin@nazamllc.com) open the visitor's email client
+   - LinkedIn link (https://linkedin.com/in/muhammad-nazam)
+   - Scroll-reveal animations and sticky nav hide/show on scroll
    - Mobile layout
 
 Notes:
 - This is a static website. It does not require Node, React, Vite, or a database.
-- The contact form currently sends JSON to FormSubmit at the action URL in index.html.
-- Do not test the contact form by double-clicking index.html. It must run from a local web server or the live domain.
-- If you later switch to n8n, use a public HTTPS webhook URL for the live Hostinger site.
-- Important domain check: this upload is configured for https://nazamllc.com/ without a hyphen. As of May 2, 2026, https://nazam-llc.com/ with a hyphen does not resolve in DNS from our test environment. If you want to use the hyphenated domain, add/fix its DNS records in Hostinger and update the canonical URLs in index.html, robots.txt, sitemap.xml, and llms.txt.
-- If the design still looks broken after upload, clear the Hostinger/LiteSpeed cache and test in a private browser window. The HTML uses versioned CSS/JS URLs so fresh uploads are less likely to be hidden by browser cache.
+- There is no contact form on this site — all contact CTAs are mailto: links to admin@nazamllc.com.
+- index.html links to styles.css and script.js with a "?v=" version query string. Bump that version
+  (e.g. ?v=3 -> ?v=4) in index.html whenever you update styles.css or script.js, so Hostinger/LiteSpeed
+  cache and visitors' browsers pick up the new files instead of serving a stale cached copy.
+- Do not test the page by double-clicking index.html for anything beyond a quick visual check;
+  serve it from a local web server or the live domain for full parity.
+- Important domain check: this upload is configured for https://nazamllc.com/ without a hyphen. If you
+  later switch to a hyphenated domain, add/fix its DNS records in Hostinger and update the canonical URL,
+  Open Graph URLs, and JSON-LD in index.html, plus robots.txt, sitemap.xml, and llms.txt.
+- If the design still looks broken after upload, clear the Hostinger/LiteSpeed cache and test in a
+  private browser window.
