@@ -87,8 +87,11 @@
       else { menu.setAttribute("hidden", ""); }
       document.body.classList.toggle("menu-open", open);
       if (open) {
+        // The panel lives inside the sticky nav and is positioned at top:100%,
+        // so it always sits directly below the header with no measurement.
+        // preventScroll stops focus from scrolling the locked body.
         var first = menu.querySelector("a");
-        if (first) first.focus();
+        if (first) first.focus({ preventScroll: true });
       }
     }
 
