@@ -437,3 +437,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
    full-width card grids of the service pages it leaves most of the card empty,
    so the cap is scoped to the homepage context rather than applied globally. */
 .capabilities-copy .card p{max-width:24ch}
+
+/* Card-shaped links must not inherit default anchor colour/underline.
+   Applies to the product cards on work.html and the capability cards
+   on the homepage once they become links. */
+a.lab,a.card{display:block;text-decoration:none;color:inherit}
+a.lab:hover .arrow-mark,a.card:hover .arrow-mark{transform:translateX(4px)}
+.arrow-mark{transition:transform .2s ease}
+a.lab:focus-visible,a.card:focus-visible{outline:2px solid var(--coral);outline-offset:4px}
