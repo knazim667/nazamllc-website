@@ -480,3 +480,15 @@ a.lab:focus-visible,a.card:focus-visible{outline:2px solid var(--coral);outline-
   .spec-list{grid-template-columns:1fr;gap:4px 0}
   .spec-list dt{padding-top:14px}
 }
+
+/* --- case study: full-width landscape capture ---
+   The salon product is a web app, so its screenshots are wide landscape
+   captures rather than tall phone frames. .shot-grid and .product-art both
+   crop them badly, so this runs one capture across the text column instead. */
+.wide-shot{margin:34px 0 0;max-width:900px}
+.wide-shot img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:var(--shadow)}
+.wide-shot figcaption{margin-top:12px;font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint)}
+@media(max-width:560px){
+  .wide-shot{margin-top:24px}
+  .wide-shot img{border-radius:11px}
+}
