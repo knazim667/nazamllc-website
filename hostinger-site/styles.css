@@ -178,7 +178,7 @@ section.tight{padding:90px 0}
 .card .num{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:500;color:var(--coral);letter-spacing:0.04em;margin-bottom:16px;display:flex;justify-content:space-between;align-items:baseline}
 .card .num .tag{font-family:var(--sans);font-size:9.5px;color:var(--ink-faint);letter-spacing:0.18em;text-transform:uppercase;font-style:normal;font-weight:500}
 .card h3{font-family:var(--sans);font-size:22px;font-weight:700;line-height:1.05;letter-spacing:-0.014em;margin-bottom:14px}
-.card p{font-family:var(--body);font-size:13.5px;color:var(--ink-mute);line-height:1.55;max-width:24ch}
+.card p{font-family:var(--body);font-size:13.5px;color:var(--ink-mute);line-height:1.55}
 .card .arrow-mark{position:absolute;right:22px;bottom:22px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:all 0.18s ease}
 .card:hover .arrow-mark{background:var(--coral);border-color:var(--coral);color:#fff}
 .card .arrow-mark svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.6}
@@ -432,3 +432,8 @@ body.menu-open{overflow:hidden}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:200;padding:12px 20px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:14px;text-decoration:none}
 .skip-link:focus{left:0}
 a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:2px}
+
+/* 24ch suits the homepage, where cards sit in a half-width column. On the
+   full-width card grids of the service pages it leaves most of the card empty,
+   so the cap is scoped to the homepage context rather than applied globally. */
+.capabilities-copy .card p{max-width:24ch}
