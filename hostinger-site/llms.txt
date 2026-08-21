@@ -23,8 +23,11 @@ Legal structure: Wyoming LLC, established 2025
 - E-Commerce Seller: automation reclaimed 2.5 of 3 daily hours previously spent on PPC and messages, with no revenue loss.
 - Client Onboarding: a marketing agency's onboarding process cut from 4 hours to 20 minutes via a contract-signature-triggered workflow.
 - Lead Generation 3×: an AI agent monitors communities, classifies leads, and drafts outreach so sales reps focus on conversations instead of prospecting.
-- FB AI Lead Agent: an autonomous desktop app monitors Facebook groups, classifies prospects by pain level, and drafts human-like replies — live in production.
-- AI Finance Platform (in development, 2026): a web platform applying sector rotation models and AI-assisted technical analysis for retail investors.
+
+## Products We Build And Run
+
+- Chromyne (iOS, live since 28 July 2026): an AI colour-analysis and beauty app. A selfie plus a short style quiz returns a seasonal colour result, clothing palette, makeup shades, hair colour ideas, face-shape tips, and a shareable card. Free preview, then $9.99/month or $69.99/year. Built with Expo React Native and TypeScript on a Node/TypeScript API, Supabase, and RevenueCat, with Gemini as the primary image-analysis model and OpenAI as fallback. Designed, built, and run by the Nazam LLC team. App Store: https://apps.apple.com/us/app/chromyne/id6788763718
+- Chromyne for Salons (web, live in pilot): a B2B application where a salon captures a client photo at the chair and shows realistic AI style previews before any work starts. $99/$199/$349 per month with a 7-day trial. Live at https://salon.chromyne.app
 
 ## Method
 
@@ -42,12 +45,17 @@ Primary H1: Your Business Is Bleeding Money. We Stop the Leak.
 
 A free 30-minute strategy call diagnoses the visitor's biggest operational bottleneck across automation, marketplace operations, product development, or investing — and gives a concrete recommendation whether or not they hire Nazam LLC.
 
-## Important Sections (single-page site)
+## Pages
 
 - Home / Overview: https://nazamllc.com/
-- Capabilities / Services: https://nazamllc.com/#services
-- Selected Work: https://nazamllc.com/#work
-- Method: https://nazamllc.com/#method
-- FAQ: https://nazamllc.com/#faq
-- About the Founder: https://nazamllc.com/#about
-- Contact: https://nazamllc.com/#contact
+- AI Automations & Agents: https://nazamllc.com/ai-automations.html
+- Amazon & Walmart Marketplace: https://nazamllc.com/amazon-walmart.html
+- App & Web Development: https://nazamllc.com/app-development.html
+- Financial Intelligence: https://nazamllc.com/financial-intelligence.html
+- Work (products and client outcomes): https://nazamllc.com/work.html
+- Case study — Chromyne: https://nazamllc.com/work/chromyne.html
+- Case study — Chromyne for Salons: https://nazamllc.com/work/chromyne-salons.html
+- Free resource — Market Timeline Guide: https://nazamllc.com/downloads/stock-market-timeline-guide.html
+- Free resource — Sector Rotation Cheat Sheet: https://nazamllc.com/downloads/sector-rotation-cheat-sheet.html
+- Privacy Policy: https://nazamllc.com/privacy.html
+- Terms of Service: https://nazamllc.com/terms.html

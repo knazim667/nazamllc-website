@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Stock Market Timeline Guide — Nazam LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c12;
+    --surface: #0e1420;
+    --surface2: #141c2a;
+    --border: #1e2d45;
+    --accent: #00c8ff;
+    --accent2: #0077ff;
+    --accent-glow: rgba(0,200,255,0.12);
+    --green: #00e5a0;
+    --red: #ff4757;
+    --yellow: #ffd32a;
+    --orange: #ff6b35;
+    --text: #e8f0fe;
+    --muted: #7a8fa6;
+    --heading: #Syne, sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 0;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,120,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .brand-tag span { width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; }
+  .cover-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin: 48px 0 24px;
+  }
+  .cover-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .cover-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin: 32px 0;
+  }
+  .cover-checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .cover-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .cover-check::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 60px;
+    border-top: 1px solid var(--border);
+  }
+  .cover-footer .company { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--accent); }
+  .cover-footer .disclaimer { font-size: 11px; color: var(--muted); max-width: 300px; text-align: right; }
+
+  /* SECTION */
+  .page-section { margin: 70px 0; }
+  h2.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h3.section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .section-intro { color: var(--muted); font-size: 15px; margin-bottom: 40px; max-width: 640px; }
+
+  /* CYCLE PHASES */
+  .phases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .phase-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .phase-1::before { background: linear-gradient(90deg, var(--green), transparent); }
+  .phase-2::before { background: linear-gradient(90deg, var(--accent), transparent); }
+  .phase-3::before { background: linear-gradient(90deg, var(--yellow), transparent); }
+  .phase-4::before { background: linear-gradient(90deg, var(--red), transparent); }
+  .phase-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .phase-1 .phase-num { color: var(--green); }
+  .phase-2 .phase-num { color: var(--accent); }
+  .phase-3 .phase-num { color: var(--yellow); }
+  .phase-4 .phase-num { color: var(--red); }
+  .phase-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .phase-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+  .phase-meta { display: flex; flex-direction: column; gap: 6px; }
+  .phase-meta-row { display: flex; justify-content: space-between; font-size: 12px; }
+  .phase-meta-label { color: var(--muted); }
+  .phase-meta-val { font-weight: 600; }
+
+  /* CYCLE VISUAL */
+  .cycle-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 32px 0;
+  }
+  .cycle-bar {
+    display: flex;
+    height: 48px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0 12px;
+    gap: 3px;
+  }
+  .cycle-bar-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+  }
+  .seg-recovery { background: var(--green); flex: 2; }
+  .seg-expansion { background: var(--accent); flex: 4; }
+  .seg-late { background: var(--yellow); flex: 2; }
+  .seg-contraction { background: var(--red); flex: 1.5; }
+  .cycle-labels { display: flex; gap: 3px; }
+  .cycle-label { font-size: 11px; color: var(--muted); text-align: center; }
+  .cycle-label.l1 { flex: 2; }
+  .cycle-label.l2 { flex: 4; }
+  .cycle-label.l3 { flex: 2; }
+  .cycle-label.l4 { flex: 1.5; }
+
+  /* TIMELINE TABLE */
+  .timeline-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    margin: 24px 0;
+  }
+  .timeline-table th {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 16px;
+    text-align: left;
+  }
+  .timeline-table td {
+    padding: 14px 16px;
+    background: var(--surface);
+    font-size: 13px;
+    border: 1px solid transparent;
+  }
+  .timeline-table tr:hover td { border-color: var(--border); }
+  .timeline-table td:first-child { border-radius: 10px 0 0 10px; }
+  .timeline-table td:last-child { border-radius: 0 10px 10px 0; }
+  .bull-tag {
+    background: rgba(0,229,160,0.1);
+    color: var(--green);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .bear-tag {
+    background: rgba(255,71,87,0.1);
+    color: var(--red);
+    border: 1px solid rgba(255,71,87,0.2);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* FED SECTION */
+  .fed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .fed-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .fed-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fed-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .fed-card ul { list-style: none; }
+  .fed-card li { font-size: 13px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 8px; }
+  .fed-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .fed-card li:last-child { border-bottom: none; }
+
+  /* INDICATORS */
+  .indicators-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  .indicator-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .indicator-icon { font-size: 20px; margin-bottom: 8px; }
+  .indicator-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .indicator-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .indicator-watch { font-size: 11px; color: var(--accent); margin-top: 8px; font-weight: 600; }
+
+  /* MISTAKES */
+  .mistake-row {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  .mistake-phase-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .mistake-col h5 { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .mistake-text { font-size: 13px; line-height: 1.5; }
+  .mistake-bad { color: #ff7675; }
+  .mistake-good { color: var(--green); }
+
+  /* ALLOCATION */
+  .allocation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+  .alloc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .alloc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .alloc-phase { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; }
+  .alloc-sentiment { font-size: 11px; color: var(--muted); }
+  .alloc-bars { display: flex; flex-direction: column; gap: 8px; }
+  .alloc-bar-row { display: flex; align-items: center; gap: 10px; font-size: 12px; }
+  .alloc-asset { width: 100px; color: var(--muted); flex-shrink: 0; }
+  .alloc-track { flex: 1; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .alloc-fill { height: 100%; border-radius: 3px; }
+  .alloc-pct { width: 32px; text-align: right; font-weight: 600; font-size: 12px; }
+
+  /* SIGNAL BOX */
+  .signal-box {
+    background: linear-gradient(135deg, rgba(0,200,255,0.06), rgba(0,119,255,0.06));
+    border: 1px solid rgba(0,200,255,0.2);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+  .signal-box h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .signals-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .signal-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); }
+  .signal-item::before { content: '◆'; color: var(--accent); font-size: 8px; flex-shrink:0; margin-top: 5px; }
+
+  /* PAGE BREAK */
+  .page-break { page-break-before: always; margin-top: 60px; }
+
+  /* FOOTER NOTE */
+  .doc-footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .doc-footer strong { color: var(--accent); }
+
+  @media print {
+    body { background: #080c12 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover { page-break-after: always; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div>
+    <div class="brand-tag"><span></span> Nazam LLC · Financial Intelligence</div>
+    <h1 class="cover-title">The Stock Market<br><em>Timeline Guide</em></h1>
+    <p class="cover-sub">A visual, chronological guide to how stock market cycles unfold — from early recovery through late-cycle contraction and bear market phases.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-checklist">
+      <div class="cover-check">The four phases of a market cycle with historical examples</div>
+      <div class="cover-check">How Federal Reserve policy shifts drive cycle transitions</div>
+      <div class="cover-check">Bull/bear market data from 1950 to present</div>
+      <div class="cover-check">Key economic indicators to watch at each phase</div>
+      <div class="cover-check">Common investor mistakes — and how to avoid them</div>
+      <div class="cover-check">Early signs of cycle phase change</div>
+      <div class="cover-check">Portfolio allocation posture at each stage</div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div>
+      <div class="company">NAZAM LLC</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px;">nazamllc.com · admin@nazamllc.com</div>
+    </div>
+    <div class="disclaimer">For educational purposes only. Not financial advice. All investing involves risk. Past performance does not guarantee future results.</div>
+  </div>
+</div>
+
+<!-- SECTION 1: THE FOUR PHASES -->
+<div class="page-section page-break">
+  <h2 class="section-title">Chapter 01</h2>
+  <h3 class="section-heading">The Four Phases of a Market Cycle</h3>
+  <p class="section-intro">Every stock market cycle moves through four distinct phases. Understanding where you are in the cycle is the single most powerful edge a non-institutional investor can have.</p>
+
+  <div class="cycle-visual">
+    <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">A Typical Full Market Cycle — Relative Duration</div>
+    <div class="cycle-bar">
+      <div class="cycle-bar-seg seg-recovery">RECOVERY</div>
+      <div class="cycle-bar-seg seg-expansion">EXPANSION (MID-CYCLE)</div>
+      <div class="cycle-bar-seg seg-late">LATE CYCLE</div>
+      <div class="cycle-bar-seg seg-contraction">BEAR</div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px;">Avg. bull market duration: <strong style="color:var(--green)">3.8 years</strong> &nbsp;·&nbsp; Avg. bear market duration: <strong style="color:var(--red)">1.3 years</strong> &nbsp;·&nbsp; Full cycle peak-to-peak: <strong style="color:var(--accent)">4–10 years</strong></div>
+  </div>
+
+  <div class="phases-grid">
+    <div class="phase-card phase-1">
+      <div class="phase-num">Phase 01 · Early Cycle</div>
+      <div class="phase-name">Recovery</div>
+      <p class="phase-desc">The economy bottoms out. The Fed cuts rates aggressively. Credit begins to thaw. Consumer and business confidence is at its lowest — but smart money starts buying. Stock prices begin rising from deeply depressed levels.</p>
+      <div class="phase-meta">
+        <div class="phase-meta-row"><span class="phase-meta-label">Fed stance</span><span class="phase-meta-val" style="color:var(--green)">Cutting rates</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Market sentiment</span><span class="phase-meta-val">Fear / Disbelief</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Best sectors</span><span class="phase-meta-val" style="color:var(--green)">Financials, Real Estate</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Historical example</span><span class="phase-meta-val">2009, 2020</span></div>
+      </div>
+    </div>
+    <div class="phase-card phase-2">
+      <div class="phase-num">Phase 02 · Mid-Cycle</div>
+      <div class="phase-name">Expansion</div>
+      <p class="phase-desc">The longest phase. GDP growth accelerates, corporate earnings surge, employment rises. The Fed keeps rates low but starts moving toward neutral. This is where most of a bull market's returns are made.</p>
+      <div class="phase-meta">
+        <div class="phase-meta-row"><span class="phase-meta-label">Fed stance</span><span class="phase-meta-val" style="color:var(--accent)">Neutral / Gradual hikes</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Market sentiment</span><span class="phase-meta-val">Optimism / Confidence</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Best sectors</span><span class="phase-meta-val" style="color:var(--accent)">Tech, Industrials, Consumer Disc.</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Historical example</span><span class="phase-meta-val">2010–2018, 1983–1999</span></div>
+      </div>
+    </div>
+    <div class="phase-card phase-3">
+      <div class="phase-num">Phase 03 · Late Cycle</div>
+      <div class="phase-name">Peak</div>
+      <p class="phase-desc">Growth slows but remains positive. Inflation rises. The Fed hikes rates aggressively to cool the economy. Yield curves flatten or invert. Markets can still rise, but risk is building. Euphoria is near its peak.</p>
+      <div class="phase-meta">
+        <div class="phase-meta-row"><span class="phase-meta-label">Fed stance</span><span class="phase-meta-val" style="color:var(--yellow)">Aggressive hiking</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Market sentiment</span><span class="phase-meta-val">Euphoria / Greed</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Best sectors</span><span class="phase-meta-val" style="color:var(--yellow)">Energy, Materials, Healthcare</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Historical example</span><span class="phase-meta-val">1999–2000, 2006–2007, 2021–2022</span></div>
+      </div>
+    </div>
+    <div class="phase-card phase-4">
+      <div class="phase-num">Phase 04 · Contraction</div>
+      <div class="phase-name">Bear Market</div>
+      <p class="phase-desc">GDP contracts. Unemployment rises. Corporate earnings fall. High rates choke credit. The S&P 500 drops 20%+ from its peak. Panic selling sets in. This phase is painful but brief — averaging just 1.3 years.</p>
+      <div class="phase-meta">
+        <div class="phase-meta-row"><span class="phase-meta-label">Fed stance</span><span class="phase-meta-val" style="color:var(--red)">Pivoting to cuts</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Market sentiment</span><span class="phase-meta-val">Panic / Despair</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Best sectors</span><span class="phase-meta-val" style="color:var(--red)">Utilities, Consumer Staples, Cash</span></div>
+        <div class="phase-meta-row"><span class="phase-meta-label">Historical example</span><span class="phase-meta-val">2000–2002, 2008–2009, 2022</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: HISTORICAL DATA -->
+<div class="page-section page-break">
+  <h2 class="section-title">Chapter 02</h2>
+  <h3 class="section-heading">Bull & Bear Markets — Historical Data (1950–Present)</h3>
+  <p class="section-intro">Bear markets are brutal but brief. Bull markets are long and powerful. The data below proves one thing: time in the market beats timing the market.</p>
+
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Type</th>
+        <th>Duration</th>
+        <th>Return / Decline</th>
+        <th>Key Driver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1950–1966</td><td><span class="bull-tag">BULL</span></td><td>16 years</td><td style="color:var(--green)">+517%</td><td>Post-WWII industrialization</td></tr>
+      <tr><td>1966–1982</td><td><span class="bear-tag">BEAR</span></td><td>16 years</td><td style="color:var(--red)">Flat / volatile</td><td>Stagflation, OPEC oil crisis</td></tr>
+      <tr><td>1982–2000</td><td><span class="bull-tag">BULL</span></td><td>18 years</td><td style="color:var(--green)">+1,400%</td><td>Tech boom, falling rates</td></tr>
+      <tr><td>2000–2002</td><td><span class="bear-tag">BEAR</span></td><td>~2.5 years</td><td style="color:var(--red)">-49%</td><td>Dot-com crash</td></tr>
+      <tr><td>2002–2007</td><td><span class="bull-tag">BULL</span></td><td>5 years</td><td style="color:var(--green)">+101%</td><td>Housing, credit expansion</td></tr>
+      <tr><td>2007–2009</td><td><span class="bear-tag">BEAR</span></td><td>17 months</td><td style="color:var(--red)">-57%</td><td>Global financial crisis</td></tr>
+      <tr><td>2009–2020</td><td><span class="bull-tag">BULL</span></td><td>11 years</td><td style="color:var(--green)">+400%</td><td>Ultra-low rates, Big Tech</td></tr>
+      <tr><td>Feb–Mar 2020</td><td><span class="bear-tag">BEAR</span></td><td>33 days</td><td style="color:var(--red)">-34%</td><td>COVID-19 pandemic shock</td></tr>
+      <tr><td>2020–2021</td><td><span class="bull-tag">BULL</span></td><td>~2 years</td><td style="color:var(--green)">+114%</td><td>Stimulus, reopening</td></tr>
+      <tr><td>2022</td><td><span class="bear-tag">BEAR</span></td><td>~9 months</td><td style="color:var(--red)">-27%</td><td>Aggressive Fed rate hikes</td></tr>
+      <tr><td>2023–Present</td><td><span class="bull-tag">BULL</span></td><td>Ongoing</td><td style="color:var(--green)">+60%+</td><td>AI boom, rate normalization</td></tr>
+    </tbody>
+  </table>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;font-size:13px;color:var(--muted);">
+    <strong style="color:var(--text)">Key Insight:</strong> The longest bear market in this period lasted ~2.5 years (2000–2002). The shortest lasted 33 days (COVID crash 2020). On average, bear markets last <strong style="color:var(--red)">1.3 years</strong> and recover fully within <strong style="color:var(--accent)">2–3 years</strong>. The investor who stayed invested through every bear market since 1950 turned $10,000 into over $3.8 million.
+  </div>
+</div>
+
+<!-- SECTION 3: FED POLICY -->
+<div class="page-section page-break">
+  <h2 class="section-title">Chapter 03</h2>
+  <h3 class="section-heading">How Fed Policy Drives Cycle Transitions</h3>
+  <p class="section-intro">The Federal Reserve is the most powerful force in markets. Understanding their playbook lets you anticipate cycle shifts before the crowd catches on.</p>
+
+  <div class="fed-grid">
+    <div class="fed-card">
+      <h4><span class="fed-dot" style="background:var(--red)"></span> Rate Hike Cycle (Tightening)</h4>
+      <ul>
+        <li>Fed raises rates to fight inflation</li>
+        <li>Borrowing costs rise for businesses and consumers</li>
+        <li>Bond yields rise, making stocks less attractive</li>
+        <li>Credit tightens — leveraged companies struggle</li>
+        <li>Growth slows, recession risk increases</li>
+        <li>Late cycle / bear market typically follows</li>
+      </ul>
+    </div>
+    <div class="fed-card">
+      <h4><span class="fed-dot" style="background:var(--green)"></span> Rate Cut Cycle (Easing)</h4>
+      <ul>
+        <li>Fed cuts rates to stimulate the economy</li>
+        <li>Cheaper credit fuels business investment</li>
+        <li>Bond yields fall, stocks become more attractive</li>
+        <li>Housing and real estate benefit immediately</li>
+        <li>Financials begin to recover first</li>
+        <li>Early recovery / new bull market typically follows</li>
+      </ul>
+    </div>
+    <div class="fed-card">
+      <h4><span class="fed-dot" style="background:var(--yellow)"></span> Yield Curve Inversion (Warning Signal)</h4>
+      <ul>
+        <li>2-year yield exceeds 10-year yield</li>
+        <li>Has preceded every recession since 1955</li>
+        <li>Typically leads recession by 6–24 months</li>
+        <li>Not an immediate sell signal — markets can rally further</li>
+        <li>Watch for disinversion as the actual trigger</li>
+        <li>Most recent inversion: 2022–2024</li>
+      </ul>
+    </div>
+    <div class="fed-card">
+      <h4><span class="fed-dot" style="background:var(--accent)"></span> The Pivot (Most Powerful Signal)</h4>
+      <ul>
+        <li>When the Fed stops hiking and begins cutting</li>
+        <li>Historically one of the strongest buy signals</li>
+        <li>Markets often anticipate the pivot 3–6 months early</li>
+        <li>First cut often confirms recovery is beginning</li>
+        <li>Watch Fed Funds Futures for market expectations</li>
+        <li>Most recent pivot: September 2024</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: INDICATORS -->
+<div class="page-section">
+  <h2 class="section-title">Chapter 04</h2>
+  <h3 class="section-heading">Key Economic Indicators to Watch</h3>
+  <p class="section-intro">You don't need to watch 100 indicators. These seven are the ones that matter most for identifying where we are in the cycle.</p>
+
+  <div class="indicators-grid">
+    <div class="indicator-card">
+      <div class="indicator-icon">📈</div>
+      <div class="indicator-name">Yield Curve (2s10s)</div>
+      <div class="indicator-desc">The spread between 2-year and 10-year Treasury yields. Inversion = recession warning.</div>
+      <div class="indicator-watch">Watch: US Treasury yield spreads daily</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">💼</div>
+      <div class="indicator-name">Unemployment Rate</div>
+      <div class="indicator-desc">Rising unemployment signals contraction. Falling unemployment signals expansion.</div>
+      <div class="indicator-watch">Watch: Monthly BLS jobs report</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">🏭</div>
+      <div class="indicator-name">ISM Manufacturing PMI</div>
+      <div class="indicator-desc">Above 50 = expansion. Below 50 = contraction. One of the earliest leading indicators.</div>
+      <div class="indicator-watch">Watch: Released 1st business day of month</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">💰</div>
+      <div class="indicator-name">CPI (Inflation)</div>
+      <div class="indicator-desc">High inflation forces Fed to hike. Falling inflation enables rate cuts and cycle recovery.</div>
+      <div class="indicator-watch">Watch: Monthly CPI release, mid-month</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">🏠</div>
+      <div class="indicator-name">Housing Starts</div>
+      <div class="indicator-desc">One of the first sectors to recover. Rising starts = early cycle confidence signal.</div>
+      <div class="indicator-watch">Watch: Monthly Census Bureau release</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">📊</div>
+      <div class="indicator-name">Conference Board LEI</div>
+      <div class="indicator-desc">Leading Economic Index — composite of 10 leading indicators. 6 consecutive monthly declines = recession warning.</div>
+      <div class="indicator-watch">Watch: Monthly LEI release</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">🛢️</div>
+      <div class="indicator-name">Credit Spreads (HYG)</div>
+      <div class="indicator-desc">High-yield bond spreads widening = stress in credit markets = market selloff warning.</div>
+      <div class="indicator-watch">Watch: FRED ICE BofA HY spread daily</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">😰</div>
+      <div class="indicator-name">VIX (Fear Index)</div>
+      <div class="indicator-desc">Above 30 = high fear, often signals near-term market bottom. Below 15 = complacency.</div>
+      <div class="indicator-watch">Watch: CBOE VIX daily — spikes = opportunity</div>
+    </div>
+    <div class="indicator-card">
+      <div class="indicator-icon">🧾</div>
+      <div class="indicator-name">Corporate Earnings (EPS)</div>
+      <div class="indicator-desc">Declining EPS growth signals late cycle or bear. Reaccelerating growth signals new bull.</div>
+      <div class="indicator-watch">Watch: Quarterly earnings season</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: MISTAKES -->
+<div class="page-section page-break">
+  <h2 class="section-title">Chapter 05</h2>
+  <h3 class="section-heading">Common Investor Mistakes at Each Stage</h3>
+  <p class="section-intro">Most retail investors do the exact opposite of what they should at each phase. Here's the pattern — and how to break it.</p>
+
+  <div class="mistake-row">
+    <div class="mistake-phase-label" style="color:var(--green)">RECOVERY</div>
+    <div class="mistake-col">
+      <h5>❌ Mistake</h5>
+      <div class="mistake-text mistake-bad">Selling everything after the crash. "It's going to zero." Too scared to buy when assets are cheap. Sitting in cash waiting for "certainty."</div>
+    </div>
+    <div class="mistake-col">
+      <h5>✓ What to do instead</h5>
+      <div class="mistake-text mistake-good">Start scaling in systematically. Buy quality assets at a discount. Accept that uncertainty IS the opportunity. Follow Fed pivot signals.</div>
+    </div>
+  </div>
+
+  <div class="mistake-row">
+    <div class="mistake-phase-label" style="color:var(--accent)">EXPANSION</div>
+    <div class="mistake-col">
+      <h5>❌ Mistake</h5>
+      <div class="mistake-text mistake-bad">Over-trading and chasing individual stocks. Panic-selling every 5% correction. Not staying invested through mid-cycle dips.</div>
+    </div>
+    <div class="mistake-col">
+      <h5>✓ What to do instead</h5>
+      <div class="mistake-text mistake-good">Ride the trend. Stay invested in cyclical growth sectors. Use dips as buying opportunities. Let compounding work.</div>
+    </div>
+  </div>
+
+  <div class="mistake-row">
+    <div class="mistake-phase-label" style="color:var(--yellow)">LATE CYCLE</div>
+    <div class="mistake-col">
+      <h5>❌ Mistake</h5>
+      <div class="mistake-text mistake-bad">Buying the most speculative assets at peak euphoria. Adding leverage just as risk is highest. Ignoring inverted yield curve because "this time is different."</div>
+    </div>
+    <div class="mistake-col">
+      <h5>✓ What to do instead</h5>
+      <div class="mistake-text mistake-good">Rotate toward defensive sectors. Trim speculative positions. Raise cash levels. Shorten bond duration. Watch credit spreads.</div>
+    </div>
+  </div>
+
+  <div class="mistake-row">
+    <div class="mistake-phase-label" style="color:var(--red)">BEAR MARKET</div>
+    <div class="mistake-col">
+      <h5>❌ Mistake</h5>
+      <div class="mistake-text mistake-bad">Panic selling at the bottom. Swearing off stocks forever. Missing the recovery rally by waiting for "all clear." Checking portfolio daily.</div>
+    </div>
+    <div class="mistake-col">
+      <h5>✓ What to do instead</h5>
+      <div class="mistake-text mistake-good">Hold quality positions. Deploy cash reserves into oversold leaders. Prepare a watchlist. Remember: every bear market has ended. Every one.</div>
+    </div>
+  </div>
+
+  <div class="signal-box">
+    <h4>⚡ How to Identify Early Signs of a Phase Change</h4>
+    <div class="signals-list">
+      <div class="signal-item">Fed language shifts from "data dependent" to "watching carefully"</div>
+      <div class="signal-item">Yield curve disinverts after prolonged inversion</div>
+      <div class="signal-item">Small caps begin outperforming large caps</div>
+      <div class="signal-item">High-yield credit spreads narrow significantly</div>
+      <div class="signal-item">ISM Manufacturing PMI crosses back above 50</div>
+      <div class="signal-item">Financials and Real Estate lead the market higher</div>
+      <div class="signal-item">S&P 500 reclaims its 200-day moving average</div>
+      <div class="signal-item">VIX drops below 20 and stays there</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: ALLOCATION -->
+<div class="page-section page-break">
+  <h2 class="section-title">Chapter 06</h2>
+  <h3 class="section-heading">Suggested Portfolio Allocation by Phase</h3>
+  <p class="section-intro">These are general postures, not rigid rules. Adjust based on your age, risk tolerance, and time horizon. These are starting frameworks, not personalized financial advice.</p>
+
+  <div class="allocation-grid">
+    <div class="alloc-card">
+      <div class="alloc-header">
+        <div class="alloc-phase" style="color:var(--green)">🟢 Recovery / Early Cycle</div>
+        <div class="alloc-sentiment">Accumulate aggressively</div>
+      </div>
+      <div class="alloc-bars">
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Equities</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:80%;background:var(--green)"></div></div>
+          <span class="alloc-pct" style="color:var(--green)">80%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Bonds</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:10%;background:var(--accent)"></div></div>
+          <span class="alloc-pct">10%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Cash</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:10%;background:var(--muted)"></div></div>
+          <span class="alloc-pct">10%</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">Focus: Financials, Real Estate, Consumer Discretionary</div>
+      </div>
+    </div>
+
+    <div class="alloc-card">
+      <div class="alloc-header">
+        <div class="alloc-phase" style="color:var(--accent)">🔵 Expansion / Mid-Cycle</div>
+        <div class="alloc-sentiment">Stay fully invested</div>
+      </div>
+      <div class="alloc-bars">
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Equities</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:85%;background:var(--accent)"></div></div>
+          <span class="alloc-pct" style="color:var(--accent)">85%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Bonds</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:10%;background:var(--accent)"></div></div>
+          <span class="alloc-pct">10%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Cash</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:5%;background:var(--muted)"></div></div>
+          <span class="alloc-pct">5%</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">Focus: Tech, Industrials, Communication Services</div>
+      </div>
+    </div>
+
+    <div class="alloc-card">
+      <div class="alloc-header">
+        <div class="alloc-phase" style="color:var(--yellow)">🟡 Late Cycle / Peak</div>
+        <div class="alloc-sentiment">Rotate defensive</div>
+      </div>
+      <div class="alloc-bars">
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Equities</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:60%;background:var(--yellow)"></div></div>
+          <span class="alloc-pct" style="color:var(--yellow)">60%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Bonds</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:20%;background:var(--accent)"></div></div>
+          <span class="alloc-pct">20%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Cash</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:20%;background:var(--muted)"></div></div>
+          <span class="alloc-pct">20%</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">Focus: Energy, Materials, Healthcare, Consumer Staples</div>
+      </div>
+    </div>
+
+    <div class="alloc-card">
+      <div class="alloc-header">
+        <div class="alloc-phase" style="color:var(--red)">🔴 Bear Market / Contraction</div>
+        <div class="alloc-sentiment">Preserve capital</div>
+      </div>
+      <div class="alloc-bars">
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Equities</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:30%;background:var(--red)"></div></div>
+          <span class="alloc-pct" style="color:var(--red)">30%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Bonds</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:40%;background:var(--accent)"></div></div>
+          <span class="alloc-pct">40%</span>
+        </div>
+        <div class="alloc-bar-row">
+          <span class="alloc-asset">Cash</span>
+          <div class="alloc-track"><div class="alloc-fill" style="width:30%;background:var(--muted)"></div></div>
+          <span class="alloc-pct">30%</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;">Focus: Utilities, Consumer Staples, Short-term Treasuries</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div><strong>Nazam LLC</strong> · nazamllc.com · admin@nazamllc.com</div>
+  <div>For educational purposes only. Not financial advice. © 2025 Nazam LLC. Wyoming, USA.</div>
+</div>
+
+</body>
+</html>

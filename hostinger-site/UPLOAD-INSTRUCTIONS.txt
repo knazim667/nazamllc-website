@@ -1,37 +1,62 @@
 Nazam LLC Hostinger Upload Instructions
 
+*** IMPORTANT: THE SITE IS NOW BUILT FROM SOURCE ***
+
+Files in hostinger-site/*.html are GENERATED. Editing them directly will work
+until the next build, then your changes are silently overwritten.
+
+Edit site-src/ instead:
+  site-src/partials/head.html     <head> and opening markup (all pages)
+  site-src/partials/header.html   topbar, nav, mobile menu (all pages)
+  site-src/partials/footer.html   footer (all pages)
+  site-src/pages/*.html           one file per page: front matter + body
+  site-src/schema/*.html          JSON-LD fragments
+
+0. Build and check before uploading, from the repo root (nazam-llc/):
+     npm run build:site
+     npm run validate:site
+   Do not upload if validate:site reports problems.
+
 1. Log in to Hostinger hPanel.
 2. Open File Manager for nazamllc.com.
 3. Open the public_html folder.
-4. Upload the contents of this hostinger-site folder into public_html:
+4. Upload the contents of hostinger-site/ into public_html:
    - index.html
-   - styles.css
-   - script.js
-   - robots.txt
-   - sitemap.xml
-   - llms.txt
-   - images/ (entire folder)
-5. Make sure index.html is directly inside public_html, not nested inside another folder.
-6. Visit https://nazamllc.com/ after upload and test:
-   - Header navigation links (Services, Work, Method, FAQ, About, Contact)
-   - Hero CTAs ("See What We Do", "Book a Free Strategy Call")
-   - Labs filter pills (Automation / Marketplace / App Dev)
-   - FAQ accordion open/close
-   - mailto: links (admin@nazamllc.com) open the visitor's email client
-   - LinkedIn link (https://linkedin.com/in/muhammad-nazam)
-   - Scroll-reveal animations and sticky nav hide/show on scroll
-   - Mobile layout
+   - ai-automations.html, amazon-walmart.html,
+     app-development.html, financial-intelligence.html
+   - work.html
+   - work/  (folder: chromyne.html, chromyne-salons.html)
+   - privacy.html, terms.html, 404.html
+   - downloads/  (folder: 2 free resources)
+   - styles.css, script.js
+   - robots.txt, sitemap.xml, llms.txt
+   - .htaccess   (hidden file - enable "show hidden files" in File Manager)
+   - images/  (entire folder, including images/chromyne/ and images/chromyne-salons/)
+5. Make sure index.html is directly inside public_html, not nested in a folder.
+6. Visit https://nazamllc.com/ and test:
+   - Mobile: the hamburger menu opens, all 8 links work, Escape closes it,
+     and the "Book a Free Call" button is visible in the header
+   - The four capability cards on the homepage are clickable and land on
+     the matching service page
+   - Work page: both product cards open their case studies; the three
+     client outcome cards are deliberately NOT links
+   - Footer: the email address is visible at every screen width
+   - Both Free Resources links open the guides
+   - A made-up URL (e.g. /nope) shows the branded 404 page, not Hostinger's
+   - FAQ accordions open and close
+   - No sideways scrolling on a phone
 
 Notes:
-- This is a static website. It does not require Node, React, Vite, or a database.
-- There is no contact form on this site — all contact CTAs are mailto: links to admin@nazamllc.com.
-- index.html links to styles.css and script.js with a "?v=" version query string. Bump that version
-  (e.g. ?v=3 -> ?v=4) in index.html whenever you update styles.css or script.js, so Hostinger/LiteSpeed
-  cache and visitors' browsers pick up the new files instead of serving a stale cached copy.
-- Do not test the page by double-clicking index.html for anything beyond a quick visual check;
-  serve it from a local web server or the live domain for full parity.
-- Important domain check: this upload is configured for https://nazamllc.com/ without a hyphen. If you
-  later switch to a hyphenated domain, add/fix its DNS records in Hostinger and update the canonical URL,
-  Open Graph URLs, and JSON-LD in index.html, plus robots.txt, sitemap.xml, and llms.txt.
-- If the design still looks broken after upload, clear the Hostinger/LiteSpeed cache and test in a
-  private browser window.
+- Static site. No Node, React, Vite, or database is needed on the server.
+- No contact form; all contact CTAs are mailto: links to admin@nazamllc.com.
+- Cache busting is automatic. scripts/build.js holds ASSET_VERSION; bump it
+  whenever styles.css or script.js changes, and every page picks it up.
+- .htaccess sets the 404 page plus X-Content-Type-Options and Referrer-Policy.
+  It deliberately does NOT set HSTS: https://www.nazamllc.com currently fails
+  its TLS handshake and serves a Hostinger parking page over plain HTTP.
+  Fix the www DNS and certificate first, then consider adding HSTS.
+- Known outstanding items (not addressed by this release): no analytics
+  installed, no contact form, images are still JPEG rather than WebP, and the
+  www hostname is broken.
+- If the design looks stale after upload, clear the Hostinger/LiteSpeed cache
+  and retest in a private window.

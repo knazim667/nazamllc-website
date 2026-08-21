@@ -1,0 +1,11 @@
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# NOTE: Strict-Transport-Security is deliberately NOT set here.
+# https://www.nazamllc.com currently fails its TLS handshake and serves a
+# Hostinger parking page over plain HTTP. Enabling HSTS before that is fixed
+# would harden the broken state into a browser-cached rule.
