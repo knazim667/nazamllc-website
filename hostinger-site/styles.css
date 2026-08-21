@@ -396,7 +396,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px;margin-top:60px}
 /* RESPONSIVE */
 @media(max-width:1280px){.container{padding:0 44px}.work{margin:0 44px;padding:90px 44px}.side-rail{display:none}.nav-inner{gap:18px}.brand-meta{display:none}.nav-links{gap:28px}}
 @media(max-width:1200px){.topbar-inner .mid{display:none}}
-@media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.section-header h2{font-size:clamp(32px,4vw,50px)}.labs-grid{grid-template-columns:repeat(3,1fr)}.partners{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:28px}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:nth-child(4),.foot-grid .foot-col:nth-child(5){display:none}}
+@media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.section-header h2{font-size:clamp(32px,4vw,50px)}.labs-grid{grid-template-columns:repeat(3,1fr)}.partners{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:28px}.foot-grid{grid-template-columns:2fr 1fr 1fr}}
 @media(max-width:880px){.container{padding:0 24px}.hero-grid,.about-grid,.capabilities-grid,.testimonial-grid,.cta-grid{grid-template-columns:1fr;gap:50px}.labs-head,.method-head{grid-template-columns:1fr}.labs-grid{grid-template-columns:repeat(2,1fr)}.method-grid{grid-template-columns:repeat(2,1fr);gap:36px}.method-grid::before{display:none}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.partners{grid-template-columns:repeat(3,1fr)}.nav-links,.brand-meta{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}}
 @media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}.labs-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.pills{justify-content:flex-start}section{padding:80px 0}.topbar-inner{font-size:9px}}
 
@@ -423,3 +423,12 @@ body.menu-open{overflow:hidden}
 @media(min-width:881px){
   .mobile-menu{display:none!important}
 }
+
+/* --- footer reflows instead of hiding contact details (audit H-04) --- */
+@media(max-width:1080px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){.foot-grid{grid-template-columns:1fr;gap:32px}}
+
+/* --- accessibility (audit M-02) --- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;padding:12px 20px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:14px;text-decoration:none}
+.skip-link:focus{left:0}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:2px}
