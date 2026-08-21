@@ -445,3 +445,38 @@ a.lab,a.card{display:block;text-decoration:none;color:inherit}
 a.lab:hover .arrow-mark,a.card:hover .arrow-mark{transform:translateX(4px)}
 .arrow-mark{transition:transform .2s ease}
 a.lab:focus-visible,a.card:focus-visible{outline:2px solid var(--coral);outline-offset:4px}
+
+/* --- topbar must never overflow the viewport ---
+   .topbar-inner>span is white-space:nowrap, so on narrow screens the brand
+   span plus the right-hand group exceeded the viewport and made every page
+   scroll sideways on a phone. Shed the lowest-value items first, and clip as
+   a structural guarantee. LinkedIn and the availability note both still
+   appear in the footer at every width. */
+.topbar{overflow:hidden}
+@media(max-width:700px){.topbar-inner .topbar-link{display:none}}
+@media(max-width:480px){.topbar-inner .right{display:none}}
+
+/* --- case study: product art + screenshot grid + spec list ---
+   These replace per-element inline overrides so the layout can actually
+   respond at narrow widths (inline styles beat media queries). */
+.product-art{position:relative;aspect-ratio:1045/1400;width:100%;max-width:440px;margin-left:auto}
+.product-art img{width:100%;height:100%;object-fit:contain;border-radius:18px;display:block}
+
+.shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:780px;margin-top:26px}
+.shot-frame{position:relative;aspect-ratio:648/1400;border-radius:14px;overflow:hidden;background:var(--bone)}
+.shot-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.spec-list{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:16px 32px;max-width:70ch;font-family:var(--body);font-size:14.5px;line-height:1.6;margin:0}
+.spec-list dt{font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px}
+.spec-list dd{margin:0}
+
+@media(max-width:880px){
+  .product-art{margin-left:0;max-width:100%}
+  /* Three phone screenshots side by side become unreadable on a phone.
+     Two up keeps them legible; the third wraps. */
+  .shot-grid{grid-template-columns:repeat(2,1fr);max-width:100%}
+}
+@media(max-width:560px){
+  .spec-list{grid-template-columns:1fr;gap:4px 0}
+  .spec-list dt{padding-top:14px}
+}

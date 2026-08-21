@@ -143,7 +143,7 @@
             <a href="https://apps.apple.com/us/app/chromyne/id6788763718" class="btn btn-primary" target="_blank" rel="noreferrer">View Chromyne on the App Store →</a>
           </div>
         </div>
-        <div class="about-art" data-reveal="right" style="aspect-ratio:1045/1400;max-width:440px">
+        <div class="product-art" data-reveal="right">
           <img src="../images/chromyne/welcome.jpg" alt="Chromyne welcome screen on an iPhone, listing the app's colour analysis features" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
         </div>
       </div>
@@ -188,23 +188,23 @@
         <h2 class="display" data-reveal style="margin-top:26px">One Photo, One Quiz, One <em>Specific</em> Answer<span class="dot">.</span></h2>
         <p class="lead" data-reveal style="max-width:64ch">A user uploads a selfie and answers a short style quiz. Server-side image analysis returns a seasonal result — undertone, contrast, depth — and everything downstream follows from it: a clothing palette, makeup shades with step-by-step application, hair colour ideas, face-shape styling tips, and a share card. Paid users keep a saved history of their reports.</p>
       </div>
-      <div class="labs-grid" data-reveal style="grid-template-columns:repeat(3,1fr);max-width:780px">
+      <div class="shot-grid" data-reveal>
         <div class="lab">
-          <div class="lab-img" style="aspect-ratio:648/1400">
+          <div class="shot-frame">
             <img src="../images/chromyne/full-report.jpg" alt="Chromyne full glow-up report screen showing the user's season and recommended colours" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 01</span><span>Report</span></div>
           <h4>The full report</h4>
         </div>
         <div class="lab">
-          <div class="lab-img" style="aspect-ratio:648/1400">
+          <div class="shot-frame">
             <img src="../images/chromyne/makeup-plan.jpg" alt="Chromyne makeup artistry map with step-by-step product application guidance" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 02</span><span>Makeup</span></div>
           <h4>Artistry map</h4>
         </div>
         <div class="lab">
-          <div class="lab-img" style="aspect-ratio:648/1400">
+          <div class="shot-frame">
             <img src="../images/chromyne/share-card.jpg" alt="Chromyne shareable result card summarising a user's colour season" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 03</span><span>Share</span></div>
@@ -232,18 +232,18 @@
         <h2 class="display" data-reveal style="margin-top:26px">Boring Choices, <em>On Purpose</em><span class="dot">.</span></h2>
         <p class="lead" data-reveal style="max-width:60ch">Nothing here is exotic. Every piece was picked because it is well documented, cheap to operate at low volume, and replaceable without a rewrite.</p>
       </div>
-      <dl data-reveal style="display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:16px 32px;max-width:70ch;font-family:var(--body);font-size:14.5px;line-height:1.6;margin:0">
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">App</dt>
+      <dl class="spec-list" data-reveal>
+        <dt>App</dt>
         <dd style="margin:0;color:var(--ink-mute)">Expo React Native with TypeScript, shipping to both iOS and Android from one codebase.</dd>
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">Backend</dt>
+        <dt>Backend</dt>
         <dd style="margin:0;color:var(--ink-mute)">A Node.js and TypeScript API, with Supabase for authentication, database, and storage.</dd>
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">AI</dt>
+        <dt>AI</dt>
         <dd style="margin:0;color:var(--ink-mute)">Image analysis runs server-side, never on the device — Gemini primary, OpenAI as the fallback.</dd>
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">Billing</dt>
+        <dt>Billing</dt>
         <dd style="margin:0;color:var(--ink-mute)">RevenueCat, so subscription state is one source of truth across both stores.</dd>
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">Operations</dt>
+        <dt>Operations</dt>
         <dd style="margin:0;color:var(--ink-mute)">PostHog and Amplitude for product analytics, Sentry for crash reporting.</dd>
-        <dt style="font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px">Pricing</dt>
+        <dt>Pricing</dt>
         <dd style="margin:0;color:var(--ink-mute)">A free preview, then $9.99 per month or $69.99 per year.</dd>
       </dl>
     </div>
@@ -306,7 +306,7 @@
           <p class="lead" data-reveal style="max-width:56ch">Chromyne is on the App Store and on Google Play as <code>app.chromyne</code>. Version 1.0.3 went out on 12 August 2026. It is genuinely new: no ratings yet, and it is not ranking in store search on either platform. We are not going to dress that up as traction.</p>
           <p class="lead" data-reveal style="max-width:56ch;margin-top:18px">What it does demonstrate is a product taken end to end — design, build, QA, store review, release, and the ongoing work of keeping it running. The same foundation now carries a B2B spin-off, <a href="chromyne-salons.html" class="inline-link">Chromyne for Salons</a>, for stylists working with clients at the chair.</p>
         </div>
-        <div class="about-art" data-reveal="right" style="aspect-ratio:1045/1400;max-width:400px">
+        <div class="product-art" data-reveal="right">
           <img src="../images/chromyne/season-result.jpg" alt="Chromyne seasonal result screen showing a Warm Autumn colour passport with undertone, contrast, and depth" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
         </div>
       </div>
