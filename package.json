@@ -7,7 +7,9 @@
     "start": "node server/index.js",
     "dev": "concurrently \"nodemon server/index.js\" \"cd client && npm run dev\"",
     "build": "cd client && npm run build",
-    "install-all": "npm install && cd client && npm install"
+    "install-all": "npm install && cd client && npm install",
+    "build:site": "node scripts/build.js",
+    "validate:site": "node scripts/validate.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
