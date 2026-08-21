@@ -1,5 +1,13 @@
 ErrorDocument 404 /404.html
 
+# Deployment notes must never be publicly readable. UPLOAD-INSTRUCTIONS.txt was
+# served at https://nazamllc.com/UPLOAD-INSTRUCTIONS.txt (HTTP 200) for as long
+# as it sat in this folder. It now lives at DEPLOY.md in the repo root, outside
+# the upload payload; this rule blocks any stale copy still on the server.
+<FilesMatch "^(UPLOAD-INSTRUCTIONS\.txt|DEPLOY\.md|AGENTS\.md)$">
+  Require all denied
+</FilesMatch>
+
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

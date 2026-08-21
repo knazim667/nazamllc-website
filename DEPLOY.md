@@ -1,4 +1,8 @@
-Nazam LLC Hostinger Upload Instructions
+# Nazam LLC — Hostinger Deploy Notes
+
+**This file lives at the repo root on purpose. Do NOT put it inside
+`hostinger-site/` — anything in that folder is uploaded and served publicly.
+It was previously readable at https://nazamllc.com/UPLOAD-INSTRUCTIONS.txt**
 
 *** IMPORTANT: THE SITE IS NOW BUILT FROM SOURCE ***
 
@@ -22,6 +26,7 @@ Edit site-src/ instead:
 3. Open the public_html folder.
 4. Upload the contents of hostinger-site/ into public_html:
    - index.html
+     (do NOT upload this file, DEPLOY.md, or AGENTS.md)
    - ai-automations.html, amazon-walmart.html,
      app-development.html, financial-intelligence.html
    - work.html
@@ -30,7 +35,9 @@ Edit site-src/ instead:
    - downloads/  (folder: 2 free resources)
    - styles.css, script.js
    - robots.txt, sitemap.xml, llms.txt
-   - .htaccess   (hidden file - enable "show hidden files" in File Manager)
+   - .htaccess   (HIDDEN FILE — you must enable "show hidden files" in
+     Hostinger File Manager, and Cmd+Shift+. in macOS Finder, or it will
+     silently not upload and you will get Hostinger's stock 404 instead)
    - images/  (entire folder, including images/chromyne/ and images/chromyne-salons/)
 5. Make sure index.html is directly inside public_html, not nested in a folder.
 6. Visit https://nazamllc.com/ and test:
