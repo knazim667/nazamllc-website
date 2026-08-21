@@ -397,5 +397,29 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px;margin-top:60px}
 @media(max-width:1280px){.container{padding:0 44px}.work{margin:0 44px;padding:90px 44px}.side-rail{display:none}.nav-inner{gap:18px}.brand-meta{display:none}.nav-links{gap:28px}}
 @media(max-width:1200px){.topbar-inner .mid{display:none}}
 @media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.section-header h2{font-size:clamp(32px,4vw,50px)}.labs-grid{grid-template-columns:repeat(3,1fr)}.partners{grid-template-columns:repeat(3,1fr);gap:18px;row-gap:28px}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:nth-child(4),.foot-grid .foot-col:nth-child(5){display:none}}
-@media(max-width:880px){.container{padding:0 24px}.hero-grid,.about-grid,.capabilities-grid,.testimonial-grid,.cta-grid{grid-template-columns:1fr;gap:50px}.labs-head,.method-head{grid-template-columns:1fr}.labs-grid{grid-template-columns:repeat(2,1fr)}.method-grid{grid-template-columns:repeat(2,1fr);gap:36px}.method-grid::before{display:none}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.partners{grid-template-columns:repeat(3,1fr)}.nav-links,.brand-meta,.nav-cta{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}}
+@media(max-width:880px){.container{padding:0 24px}.hero-grid,.about-grid,.capabilities-grid,.testimonial-grid,.cta-grid{grid-template-columns:1fr;gap:50px}.labs-head,.method-head{grid-template-columns:1fr}.labs-grid{grid-template-columns:repeat(2,1fr)}.method-grid{grid-template-columns:repeat(2,1fr);gap:36px}.method-grid::before{display:none}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.partners{grid-template-columns:repeat(3,1fr)}.nav-links,.brand-meta{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}}
 @media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}.labs-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.pills{justify-content:flex-start}section{padding:80px 0}.topbar-inner{font-size:9px}}
+
+/* --- mobile navigation --- */
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:8px;background:transparent;cursor:pointer}
+.nav-toggle-bar{display:block;width:18px;height:1.5px;background:var(--ink);margin:0 auto;transition:transform .22s ease,opacity .22s ease}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:64px 0 0;z-index:90;background:var(--paper);padding:28px 24px 40px;overflow-y:auto;border-top:1px solid var(--line)}
+.mobile-menu[hidden]{display:none}
+.mobile-menu-links{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:2px}
+.mobile-menu-links a{display:block;padding:14px 0;font-family:var(--sans);font-size:17px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.mobile-menu-links a:hover,.mobile-menu-links a:focus-visible{color:var(--coral)}
+.mobile-menu-cta{display:flex;align-items:center;justify-content:center;padding:15px 24px;border-radius:999px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:15px;font-weight:500;text-decoration:none}
+.mobile-menu-meta{margin-top:22px;display:flex;flex-direction:column;gap:6px;font-family:var(--sans);font-size:13px;color:var(--ink);opacity:.7}
+.mobile-menu-meta a{color:inherit}
+body.menu-open{overflow:hidden}
+@media(max-width:880px){
+  .nav-toggle{display:flex}
+  .mobile-menu:not([hidden]){display:block}
+  .nav-cta{padding:8px 14px;font-size:12px}
+}
+@media(min-width:881px){
+  .mobile-menu{display:none!important}
+}
