@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Authorization callback — Nazam LLC</title>
+<style>
+  :root{
+    --paper:#faf9f6; --ink:#15161a; --ink-soft:#3a3f47; --ink-mute:#5f6570;
+    --bone:#efece4; --coral:#bf3a1e; --olive:#5b6135; --card:#ffffff;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --paper:#0d0c09; --ink:#e8e0ca; --ink-soft:#c9c2ad; --ink-mute:#9a9484;
+           --bone:#1c1a15; --card:#151410; --coral:#e0714f; --olive:#93a05f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:24px;background:var(--paper);color:var(--ink);
+    font:16px/1.55 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .card{width:100%;max-width:640px;background:var(--card);border:1px solid var(--bone);
+    border-radius:14px;padding:28px 26px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 6px}
+  h1{margin:0 0 4px;font-size:22px;line-height:1.25}
+  .sub{margin:0 0 22px;color:var(--ink-soft);font-size:15px}
+  .status{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;
+    padding:5px 11px;border-radius:999px;margin-bottom:18px}
+  .ok{background:color-mix(in srgb,var(--olive) 14%,transparent);color:var(--olive)}
+  .bad{background:color-mix(in srgb,var(--coral) 14%,transparent);color:var(--coral)}
+  label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-mute);margin:16px 0 6px}
+  .val{display:block;width:100%;padding:12px 13px;border:1px solid var(--bone);border-radius:9px;
+    background:var(--paper);color:var(--ink);font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+    word-break:break-all;white-space:pre-wrap}
+  button{margin-top:14px;padding:11px 18px;border:0;border-radius:9px;background:var(--ink);
+    color:var(--paper);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  button:hover{opacity:.88}
+  .note{margin-top:20px;padding-top:16px;border-top:1px solid var(--bone);
+    font-size:13px;color:var(--ink-mute)}
+  .warn{color:var(--coral);font-weight:600}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+</style>
+</head>
+<body>
+<main class="card">
+  <p class="eyebrow">Nazam LLC · internal</p>
+  <h1>Authorization callback</h1>
+  <p class="sub">This endpoint receives OAuth redirects. It stores nothing and sends nothing anywhere.</p>
+  <div id="out">
+    <span class="status bad">No parameters received</span>
+    <p class="sub">Open this page from an authorization flow, not directly.</p>
+  </div>
+  <div class="note">
+    <p><span class="warn">Treat the code below as a password.</span> It can be exchanged
+    for an access token to your ad account. It expires quickly. Do not post it publicly.</p>
+    <p style="margin-bottom:0">Nothing here is transmitted — the value is read from your
+    browser's address bar by client-side script only.</p>
+  </div>
+</main>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  // TikTok Business API returns auth_code; Login Kit and most others return code.
+  var code  = p.get("auth_code") || p.get("code");
+  var err   = p.get("error") || p.get("error_code");
+  var desc  = p.get("error_description") || p.get("message");
+  var state = p.get("state");
+  var out = document.getElementById("out");
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  var html = "";
+  if (err) {
+    html += '<span class="status bad">Authorization failed</span>';
+    html += '<label>Error</label><div class="val">' + esc(err) + '</div>';
+    if (desc) html += '<label>Description</label><div class="val">' + esc(desc) + '</div>';
+  } else if (code) {
+    html += '<span class="status ok">Authorization code received</span>';
+    html += '<label>Code</label><div class="val" id="code">' + esc(code) + '</div>';
+    if (state) html += '<label>State</label><div class="val">' + esc(state) + '</div>';
+    html += '<button type="button" id="copy">Copy code</button>';
+  } else {
+    return; // leave the default "no parameters" state in place
+  }
+  html += '<label>Full callback URL</label><div class="val">' + esc(location.href) + '</div>';
+  out.innerHTML = html;
+
+  var btn = document.getElementById("copy");
+  if (btn) btn.addEventListener("click", function () {
+    var t = document.getElementById("code").textContent;
+    function done(){ btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy code"; }, 1600); }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(t).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) { btn.textContent = "Copy manually"; }
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+</body>
+</html>

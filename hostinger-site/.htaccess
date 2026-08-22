@@ -1,5 +1,15 @@
 ErrorDocument 404 /404.html
 
+# OAuth callback (/oauth/tiktok/callback). Served from a directory index, but
+# WITHOUT Apache's DirectorySlash 301 to the trailing-slash form: an OAuth
+# redirect arrives with ?auth_code=... and a redirect hop is an avoidable place
+# for that to be dropped. This rewrite serves the file directly instead.
+# The page is noindex and is not in sitemap.xml.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^oauth/tiktok/callback$ /oauth/tiktok/callback/index.html [L]
+</IfModule>
+
 # Deployment notes must never be publicly readable. UPLOAD-INSTRUCTIONS.txt was
 # served at https://nazamllc.com/UPLOAD-INSTRUCTIONS.txt (HTTP 200) for as long
 # as it sat in this folder. It now lives at DEPLOY.md in the repo root, outside

@@ -94,8 +94,26 @@ function checkSitemap(pages) {
   }
 }
 
-const pages = htmlFiles(OUT);
+// Endpoints that must never be indexed. They intentionally have no canonical,
+// no meta description and no sitemap entry, so the normal page checks are the
+// wrong checks for them — they get their own assertion below instead. Excluded
+// from `pages` so checkSitemap() does not demand an entry it must not have.
+const NOINDEX = new Set(['oauth/tiktok/callback/index.html']);
+
+const pages = htmlFiles(OUT).filter(rel => !NOINDEX.has(rel));
 if (!pages.length) fail('hostinger-site', 'no HTML files found');
+
+for (const rel of NOINDEX) {
+  const abs = path.join(OUT, rel);
+  if (!fs.existsSync(abs)) { fail(rel, 'declared noindex page is missing'); continue; }
+  const html = fs.readFileSync(abs, 'utf8');
+  if (!/<meta name="robots" content="[^"]*noindex/i.test(html)) {
+    fail(rel, 'noindex page is missing its robots noindex meta');
+  }
+  if (/<link rel="canonical"/i.test(html)) {
+    fail(rel, 'noindex page must not declare a canonical');
+  }
+}
 for (const rel of pages) {
   // Lead magnets under downloads/ are standalone documents, not built from
   // partials — they have no <main>, no skip link, and their own <h1> rules.
