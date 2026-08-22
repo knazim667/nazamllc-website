@@ -531,3 +531,7 @@ a.lab:focus-visible,a.card:focus-visible{outline:2px solid var(--coral);outline-
 .work .label{color:var(--coral-on-light)}
 .work .label::before{background:var(--coral-on-light)}
 .work-rule .roman{color:var(--coral-on-light)}
+
+/* Work-card thumbnails. The Chromyne capture is portrait in a 4:3 frame, so
+   anchor the crop to the top where the result panel sits. */
+.work-card .img img.work-shot{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
