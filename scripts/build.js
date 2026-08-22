@@ -7,7 +7,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'hostinger-site');
-const ASSET_VERSION = '17'; // bump when styles.css or script.js changes
+const ASSET_VERSION = '18'; // bump when styles.css or script.js changes
 
 const partial = n => fs.readFileSync(path.join(SRC, 'partials', `${n}.html`), 'utf8');
 const HEAD = partial('head');
@@ -81,10 +81,16 @@ for (const rel of pageFiles(path.join(SRC, 'pages'))) {
     V: ASSET_VERSION,
   };
 
-  const html = substitute(HEAD, vars)
+  let html = substitute(HEAD, vars)
     + substitute(HEADER, vars)
     + body
     + substitute(FOOTER, vars);
+
+  // Cache-bust image sources too. styles.css and script.js already carry ?v=,
+  // but images did not, so replacing one at the same filename served the stale
+  // copy from the browser and from Hostinger's LiteSpeed cache.
+  html = html.replace(/(<img\b[^>]*?\bsrc=")([^"?]+\.(?:webp|jpg|jpeg|png|svg))(")/g,
+                      `$1$2?v=${ASSET_VERSION}$3`);
 
   const dest = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
