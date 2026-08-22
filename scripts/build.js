@@ -7,7 +7,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'hostinger-site');
-const ASSET_VERSION = '10'; // bump when styles.css or script.js changes
+const ASSET_VERSION = '12'; // bump when styles.css or script.js changes
 
 const partial = n => fs.readFileSync(path.join(SRC, 'partials', `${n}.html`), 'utf8');
 const HEAD = partial('head');
