@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../styles.css?v=18">
+<link rel="stylesheet" href="../styles.css?v=21">
 
 <script type="application/ld+json">
 {
@@ -129,15 +129,15 @@
       <div class="about-grid">
         <div>
           <span class="label" data-reveal>Case study Nº 01</span>
-          <h1 class="display" data-reveal style="font-size:clamp(40px,5vw,70px);margin:26px 0 28px;max-width:16ch">Chromyne: AI Colour Analysis, <em>Shipped</em><span class="dot">.</span></h1>
+          <h1 class="display" data-reveal style="font-size:var(--fs-d1);margin:26px 0 28px;max-width:16ch">Chromyne: AI Colour Analysis, <em>Shipped</em><span class="dot">.</span></h1>
           <p class="lead" data-reveal style="max-width:56ch">A user uploads a selfie, answers a short style quiz, and gets back a personalised colour, makeup, hair, and outfit report — designed, built, and run by our team.</p>
-          <p class="lead" data-reveal style="max-width:56ch;margin-top:18px;font-size:15px;color:var(--ink-mute)">Version 1.0.3 · first released 28 July 2026 · Lifestyle · 12+ · iOS 15.1 and later · free with in-app purchases.</p>
+          <p class="lead" data-reveal style="max-width:56ch;margin-top:18px;font-size:var(--fs-base);color:var(--ink-mute)">Version 1.0.3 · first released 28 July 2026 · Lifestyle · 12+ · iOS 15.1 and later · free with in-app purchases.</p>
           <div style="margin-top:34px" data-reveal>
             <a href="https://apps.apple.com/us/app/chromyne/id6788763718" class="btn btn-primary" target="_blank" rel="noreferrer">View Chromyne on the App Store →</a>
           </div>
         </div>
         <div class="product-art" data-reveal="right">
-          <img src="../images/chromyne/welcome.webp?v=18" alt="Chromyne welcome screen on an iPhone, listing the app's colour analysis features" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
+          <img src="../images/chromyne/welcome.webp?v=21" alt="Chromyne welcome screen on an iPhone, listing the app's colour analysis features" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow)">
         </div>
       </div>
     </div>
@@ -182,24 +182,24 @@
       <div class="shot-grid" data-reveal>
         <div class="lab">
           <div class="shot-frame">
-            <img src="../images/chromyne/full-report.webp?v=18" alt="Chromyne full glow-up report screen showing the user's season and recommended colours" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <img src="../images/chromyne/full-report.webp?v=21" alt="Chromyne full glow-up report screen showing the user's season and recommended colours" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 01</span><span>Report</span></div>
-          <h4>The full report</h4>
+          <h3>The full report</h3>
         </div>
         <div class="lab">
           <div class="shot-frame">
-            <img src="../images/chromyne/makeup-plan.webp?v=18" alt="Chromyne makeup artistry map with step-by-step product application guidance" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <img src="../images/chromyne/makeup-plan.webp?v=21" alt="Chromyne makeup artistry map with step-by-step product application guidance" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 02</span><span>Makeup</span></div>
-          <h4>Artistry map</h4>
+          <h3>Artistry map</h3>
         </div>
         <div class="lab">
           <div class="shot-frame">
-            <img src="../images/chromyne/share-card.webp?v=18" alt="Chromyne shareable result card summarising a user's colour season" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+            <img src="../images/chromyne/share-card.webp?v=21" alt="Chromyne shareable result card summarising a user's colour season" loading="lazy" width="648" height="1400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           </div>
           <div class="num-row"><span>Nº 03</span><span>Share</span></div>
-          <h4>Result card</h4>
+          <h3>Result card</h3>
         </div>
       </div>
       <p class="lead" data-reveal style="max-width:64ch;margin-top:40px">What it deliberately does not do matters just as much: no AR makeup try-on, no digital closet, no marketplace, no social feed, and nothing resembling dermatology-grade skin analysis. Each was considered and cut: a version one that has to survive review and run reliably cannot afford twice the surface area.</p>
@@ -272,7 +272,7 @@
           <p>The interesting one. Both subscriptions had been left in a REJECTED state as collateral damage from the earlier rejection, which made them unpurchasable — the reviewer hit "Error 5" on the paywall, which produced the next rejection, which kept the products rejected. A self-perpetuating loop no amount of code fixes; it had to be cleared at the product level in App Store Connect. Two more issues surfaced in the same pass: three leftover "Google Play" strings inside the iOS binary, cited twice under Guideline 2.3.10, and a test-mode RevenueCat SDK key that had leaked into preview builds. We fixed all three together, and the next submission was approved.</p>
         </div>
       </div>
-      <p class="lead" data-reveal style="max-width:64ch;margin-top:34px;font-size:15px;color:var(--ink-mute)">The lesson we carry into client work: review failures are rarely about code quality. They are about disclosure, store configuration, and build hygiene.</p>
+      <p class="lead" data-reveal style="max-width:64ch;margin-top:34px;font-size:var(--fs-base);color:var(--ink-mute)">The lesson we carry into client work: review failures are rarely about code quality. They are about disclosure, store configuration, and build hygiene.</p>
     </div>
   </section>
 
@@ -290,12 +290,12 @@
       <div class="about-grid">
         <div>
           <span class="label" data-reveal>Current status</span>
-          <h2 class="display" data-reveal style="margin-top:26px;font-size:clamp(34px,4.2vw,58px)">New, Live, and <em>Running</em><span class="dot">.</span></h2>
+          <h2 class="display" data-reveal style="margin-top:26px;font-size:var(--fs-d2)">New, Live, and <em>Running</em><span class="dot">.</span></h2>
           <p class="lead" data-reveal style="max-width:56ch">Chromyne is on the App Store and on Google Play as <code>app.chromyne</code>. Version 1.0.3 went out on 12 August 2026. It is genuinely new: no ratings yet, and it is not ranking in store search on either platform. We are not going to dress that up as traction.</p>
           <p class="lead" data-reveal style="max-width:56ch;margin-top:18px">What it does demonstrate is a product taken end to end — design, build, QA, store review, release, and the ongoing work of keeping it running. The same foundation now carries a B2B spin-off, <a href="chromyne-salons.html" class="inline-link">Chromyne for Salons</a>, for stylists working with clients at the chair.</p>
         </div>
         <div class="product-art" data-reveal="right">
-          <img src="../images/chromyne/season-result.webp?v=18" alt="Chromyne seasonal result screen showing a Warm Autumn colour passport with undertone, contrast, and depth" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)">
+          <img src="../images/chromyne/season-result.webp?v=21" alt="Chromyne seasonal result screen showing a Warm Autumn colour passport with undertone, contrast, and depth" loading="lazy" width="1045" height="1400" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow)">
         </div>
       </div>
     </div>
@@ -313,7 +313,7 @@
         <span>007 / 007</span>
       </div>
       <span class="label" data-reveal>Build something like this</span>
-      <h2 class="display" data-reveal style="font-size:clamp(36px,4.4vw,62px);margin:26px 0 24px;max-width:18ch">We Have Already Made the <em>Expensive</em> Mistakes<span class="dot">.</span></h2>
+      <h2 class="display" data-reveal style="font-size:var(--fs-d2);margin:26px 0 24px;max-width:18ch">We Have Already Made the <em>Expensive</em> Mistakes<span class="dot">.</span></h2>
       <p class="lead" data-reveal style="max-width:60ch">If your product has to clear App Store review, it helps to work with a team that already knows where the traps are. See how we run <a href="../app-development.html" class="inline-link">app and web development</a>.</p>
       <div style="margin-top:32px" data-reveal>
         <a href="mailto:admin@nazamllc.com" class="btn btn-primary">Book a Free Discovery Call →</a>
@@ -334,7 +334,7 @@
           <p style="margin-top:14px">Technology consultancy based in Wyoming, USA. AI automations, marketplace management, app development, and financial intelligence — all under one roof, built by operators.</p>
         </div>
         <div class="foot-col">
-          <h5>Services</h5>
+          <h3>Services</h3>
           <ul>
             <li><a href="../ai-automations.html">AI Automations</a></li>
             <li><a href="../amazon-walmart.html">Amazon &amp; Walmart</a></li>
@@ -343,29 +343,28 @@
           </ul>
         </div>
         <div class="foot-col">
-          <h5>Company</h5>
+          <h3>Company</h3>
           <ul>
             <li><a href="../work.html">Work</a></li>
             <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-            <li><a href="mailto:admin@nazamllc.com">Book a Call</a></li>
-            <li><a href="https://linkedin.com/in/muhammad-nazam" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="../index.html#method">Method</a></li>
+            <li><a href="../index.html#faq">FAQ</a></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h5>Free Resources</h5>
+          <h3>Free Resources</h3>
           <ul>
             <li><a href="../downloads/stock-market-timeline-guide.html">Market Timeline Guide</a></li>
             <li><a href="../downloads/sector-rotation-cheat-sheet.html">Sector Rotation Sheet</a></li>
-            <li><span>YouTube — coming soon</span></li>
+            <li><span class="foot-pending">YouTube — coming soon</span></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h5>Contact</h5>
+          <h3>Contact</h3>
           <ul>
             <li><a href="mailto:admin@nazamllc.com">admin@nazamllc.com</a></li>
-            <li><span>Wyoming, USA</span></li>
-            <li><a href="https://linkedin.com/in/muhammad-nazam" target="_blank" rel="noreferrer">LinkedIn →</a></li>
+            <li><a href="mailto:admin@nazamllc.com">Book a Call</a></li>
+            <li><a href="https://linkedin.com/in/muhammad-nazam" target="_blank" rel="noreferrer">LinkedIn</a></li>
           </ul>
         </div>
       </div>
@@ -382,6 +381,6 @@
 
 </div><!-- /shell -->
 
-<script src="../script.js?v=18" defer></script>
+<script src="../script.js?v=21" defer></script>
 </body>
 </html>
